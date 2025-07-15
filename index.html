@@ -205,6 +205,9 @@
     @media (max-width: 768px) {
       .hero-image {
         border-radius: 0; /* Optional: make it sharper on small screens */
+         height: 300px;         /* Set a fixed height */
+        object-fit: cover;  
+     
       }
     }
      .info-section {
@@ -212,14 +215,15 @@
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 20px;
+      padding: 0 40px;
     }
 
     .info-card {
       background-color: white;
-      border: 1px solid #ccc;
+      border: 1px solid gainsboro;
       border-radius: 2px;
       width: 20%;
-      min-width: 200px;
+      min-width: 150px;
       padding: 20px 30px;
       text-align: center;
       box-shadow: 0 0 10px rgba(0,0,0,0.05);
@@ -228,16 +232,16 @@
     
     }
 
-    .info-card:hover {
+  /*  .info-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 15px rgba(0,0,0,0.1);
       margin:30px 20px;
-    }
+    }*/
 
     .info-card img {
       width: 80px;
       height: 80px;
-      margin-bottom: 40px;
+      margin-bottom: 20px;
     }
 
     .info-card h3 {
@@ -250,24 +254,31 @@
       font-size: 14px;
       color: #444;
       line-height: 1.5;
+      margin-top: 0%;
     }
-     @media (max-width: 768px) {
+    @media (max-width: 768px) {
   .info-section {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-wrap: nowrap;                /* No wrap — horizontal scroll */
+    overflow-x: auto;                 /* Enable scroll */
+    scroll-snap-type: x mandatory;   /* Snap to cards */
+    -webkit-overflow-scrolling: touch; /* Smooth iOS scroll */
+    gap: 20px;
+    padding: 10px 15px;
   }
 
   .info-card {
-    flex: 0 0 80%;
-    margin-right: 20px;
-    scroll-snap-align: start;
+    flex: 0 0 80%;                    /* Show one card at a time mostly */
+    scroll-snap-align: start;        /* Snap from start */
+    min-width: 250px;                /* Set a min width for consistency */
+    margin-right: 10px;              /* Optional spacing */
   }
 }
+
  h2 {
       font-size: 28px;
       margin-bottom: 20px;
+      padding: 0 20px;
     }
 
     .events-container {
@@ -342,12 +353,16 @@
       text-decoration: none;
       display: inline-block;
     }
-
+@media (max-width: 768px) {
+  .events-container {
+    justify-content: center;  /* ⬅️ Center event cards */
+  }
+}
      .gallery-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 30px;
+      margin-bottom: 10px;
     }
 
     .gallery-header h2 {
@@ -412,7 +427,11 @@
       color: #444;
     }
 
-    
+    @media (max-width: 768px) {
+  .gallery-container {
+    justify-content: center;  /* ⬅️ Center gallery cards */
+  }
+}
 
     .footer {
       background-color:#003366 ; /* Dark background */
@@ -449,7 +468,7 @@
       <!-- Left Logo & Title -->
       <div class="logo-section">
         <img src="Dev_Sanskriti_Vishwavidyalaya-removebg-preview.png" alt="Logo">
-        <h1>DSVV Alumni Engage</h1>
+        <h1>DSVV Alumni Engagement</h1>
       </div>
 
       <!-- Desktop Navigation -->
@@ -554,14 +573,14 @@
  <div class="info-section">
     <div class="info-card">
       <img src="https://almashines.s3-ap-southeast-1.amazonaws.com/appdata/images/buildings.svg" alt="Cities Icon" />
-      <h3>150+ Cities & 20+ Countries</h3>
+      <h3>150+ Cities & 10+ Countries</h3>
       <p>Find alumni living in your city & connect with them</p>
     </div>
 
     <div class="info-card">
       <img src="https://almashines.s3-ap-southeast-1.amazonaws.com/appdata/images/graduated.svg" alt="Interest Groups Icon" />
       <h3>10+ Interest Groups</h3>
-      <p>Connect with the alumni from same interest groups and grow your professional as well as personal network.</p>
+      <p>Connect with the alumni from same interest groups and grow your professional as well as social network.</p>
     </div>
 
     <div class="info-card">
@@ -573,7 +592,7 @@
     <div class="info-card">
       <img src="https://almashines.s3-ap-southeast-1.amazonaws.com/appdata/images/portraits.svg" alt="Profile Icon" />
       <h3>Your Alumni Profile</h3>
-      <p>Create & complete your alumni profile and remain connected with all opportunities matching.</p>
+      <p>Create & complete your alumni profile and remain connected with all opportunities matching your interest.</p>
     </div>
   </div>
 <h2>Events</h2>
