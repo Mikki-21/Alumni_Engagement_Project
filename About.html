@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Responsive Navbar</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background-color:  #003366;
+      padding: 10px 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 10;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    .logo h1 {
+      font-size: 18px;
+      color: gold;
+    }
+
+    .mobile-toggle {
+      display: none;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .mobile-toggle button {
+      background: none;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      color: black;
+    }
+
+    .mobile-toggle .login-button {
+      background-color: #2e7d32;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .desktop-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .nav-left {
+      flex: 1;
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      justify-content: flex-end;
+      flex: 1;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      padding: 10px;
+    }
+
+    .dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+      display: none;
+      flex-direction: column;
+      z-index: 999;
+    }
+
+    .dropdown a {
+      padding: 10px;
+      color: #555;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown a:hover {
+      background: #f0f0f0;
+    }
+
+    .nav-item:hover .dropdown {
+      display: flex;
+    }
+
+    .login-button {
+      background-color: #2e7d32;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 80%;
+      height: 100vh;
+      background: #fff;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+
+    .mobile-menu.active {
+      left: 0;
+    }
+
+    .menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 20px;
+      font-weight: bold;
+      color: green;
+    }
+
+    .menu-header button {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: black;
+    }
+
+    .nav-section details {
+      font-size: 16px;
+    }
+
+    .nav-section summary {
+      cursor: pointer;
+      padding: 10px 0;
+      font-weight: bold;
+    }
+
+    .nav-section li {
+      list-style: none;
+      padding: 5px 0;
+    }
+
+    .nav-section a {
+      color: #333;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .desktop-nav {
+        display: none;
+      }
+
+      .mobile-toggle {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="top-bar">
+      <div class="logo">
+        <img src="Dev_Sanskriti_Vishwavidyalaya-removebg-preview.png" alt="Logo">
+        <h1>DSVV Alumni Engage</h1>
+      </div>
+      <div class="mobile-toggle">
+        <button id="menu-btn">MENU</button>
+        <button class="login-button">LOGIN</button>
+      </div>
+    </div>
+
+    <nav class="desktop-nav">
+      <div class="nav-left"></div>
+      <div class="nav-right">
+        <div class="nav-item">
+          <a href="#" class="nav-link">Community</a>
+          <div class="dropdown">
+            <a href="#">Alumni Directory</a>
+            <a href="#">Alumni Birthday</a>
+            <a href="#">Alumni Speaks</a>
+            <a href="#">Alumni News</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="#" class="nav-link">Events</a>
+          <div class="dropdown">
+            <a href="#">Upcoming Events</a>
+            <a href="#">Past Events</a>
+            <a href="#">Event Calendar</a>
+            <a href="#">Event Gallery</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="#" class="nav-link">Get Involved</a>
+          <div class="dropdown">
+            <a href="#">Mentorship Program</a>
+            <a href="#">Volunteer</a>
+            <a href="#">Start a Chapter</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="#" class="nav-link">About</a>
+          <div class="dropdown">
+            <a href="#">About Us</a>
+            <a href="#">Executive Committee</a>
+            <a href="#">Announcements</a>
+            <a href="#">Infographics</a>
+            <a href="#">Communications</a>
+          </div>
+        </div>
+        <button class="login-button">LOGIN</button>
+      </div>
+    </nav>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="menu-header">
+      Menu
+      <button onclick="toggleMenu()">✕</button>
+    </div>
+    <div class="nav-section">
+      <details>
+        <summary>Community</summary>
+        <li><a href="#">Alumni Directory</a></li>
+        <li><a href="#">Alumni Birthday</a></li>
+        <li><a href="#">Alumni Speaks</a></li>
+        <li><a href="#">Alumni News</a></li>
+      </details>
+      <details>
+        <summary>Events</summary>
+        <li><a href="#">Upcoming Events</a></li>
+        <li><a href="#">Past Events</a></li>
+        <li><a href="#">Event Calendar</a></li>
+        <li><a href="#">Event Gallery</a></li>
+      </details>
+      <details>
+        <summary>Get Involved</summary>
+        <li><a href="#">Mentorship Program</a></li>
+        <li><a href="#">Volunteer</a></li>
+        <li><a href="#">Start a Chapter</a></li>
+      </details>
+      <details>
+        <summary>About</summary>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Executive Committee</a></li>
+        <li><a href="#">Announcements</a></li>
+        <li><a href="#">Infographics</a></li>
+        <li><a href="#">Communications</a></li>
+      </details>
+    </div>
+  </div>
+
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    function toggleMenu() {
+      mobileMenu.classList.toggle('active');
+    }
+
+    menuBtn.addEventListener('click', toggleMenu);
+  </script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="Dev_Sanskriti_Vishwavidyalaya-removebg-preview.png">
+  <title>Signup / Login - DSVVAE</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header { background-color: #003366; padding: 10px 20px; }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+    .logo-section { display: flex; align-items: center; }
+    .logo-section img { height: 50px; margin-right: 10px; }
+    .logo-section h1 { font-size: 18px; color: gold; margin: 0; }
+
+    .navbar { display: flex; align-items: center; }
+    .nav-menu { list-style: none; display: flex; padding: 0; margin: 0; }
+    .nav-item { position: relative; }
+    .nav-link { display: block; padding: 15px 15px; color: white; text-decoration: none; font-weight: 500; cursor: pointer; }
+
+    .dropdown-menu { position: absolute; top: 100%; left: 0; background: white; box-shadow: 0 8px 16px rgba(0,0,0,0.15); list-style: none; padding: 10px 0; margin: 0; display: none; min-width: 200px; z-index: 1000; }
+    .dropdown-menu li a { display: block; padding: 10px 20px; color: #555; text-decoration: none; }
+    .dropdown-menu li a:hover { background: #eee; }
+    .dropdown:hover .dropdown-menu { display: block; }
+
+    .login-button { padding: 8px 16px; background: #2e7d32; color: white; border: none; border-radius: 4px; cursor: pointer; margin-left: 15px; text-decoration: none; }
+
+    .mobile-toggle { display: none; align-items: center; gap: 10px; }
+    .mobile-toggle button { background: none; border: none; font-size: 16px; color: white; cursor: pointer; font-weight: bold; }
+    .mobile-toggle .login-button { background: #2e7d32; color: white; padding: 8px 16px; border: none; border-radius: 4px; }
+
+    .mobile-menu { position: fixed; top: 0; left: -100%; width: 80%; height: 100vh; background: #fff; box-shadow: 2px 0 10px rgba(0,0,0,0.2); padding: 20px; display: flex; flex-direction: column; gap: 20px; transition: left 0.3s ease; z-index: 1000; }
+    .mobile-menu.active { left: 0; }
+    .mobile-menu .menu-header { display: flex; justify-content: space-between; align-items: center; font-size: 20px; font-weight: bold; color: green; }
+    .mobile-menu .nav-section { display: flex; flex-direction: column; gap: 10px; }
+    .mobile-menu .nav-section details summary { font-size: 18px; cursor: pointer; font-weight: bold; }
+    .mobile-menu li { list-style: none; padding-left: 20px; }
+    .mobile-menu a { text-decoration: none; color: #333; }
+
+    @media (max-width: 768px) {
+      .desktop-nav { display: none; }
+      .mobile-toggle { display: flex; }
+      .header-inner { flex-wrap: nowrap; justify-content: space-between; }
+    }
+
+    .headers { background: #1c4b2b; padding: 40px 20px; color: white; font-size: 32px; }
+    .login-container { max-width: 900px; background: white; display: flex; margin: -40px auto 40px auto; border-radius: 6px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); overflow: hidden; }
+
+    .left-panel, .right-panel { flex: 1; padding: 30px; display: flex; flex-direction: column; justify-content: center; }
+    .left-panel { align-items: center; border-right: 1px solid #ccc; text-align: center; }
+    .left-panel img { width: 80px; margin-bottom: 20px; }
+    .left-panel h2 { margin: 10px 0; font-size: 20px; color: #333; }
+    .left-panel p { color: #666; font-size: 14px; }
+
+    .right-panel h3 { font-size: 18px; margin-bottom: 20px; color: #333; text-align: center; }
+    .social-btn { padding: 12px; border: none; color: white; text-align: center; margin-bottom: 15px; border-radius: 4px; cursor: pointer; font-size: 14px; text-decoration: none; }
+    .facebook { background: #3b5998; } .google { background: #dd4b39; } .linkedin { background: #0077b5; }
+
+    .or-separator { text-align: center; margin: 20px 0; position: relative; }
+    .or-separator:before, .or-separator:after { content: ""; height: 1px; background: #ccc; position: absolute; top: 50%; width: 40%; }
+    .or-separator:before { left: 0; } .or-separator:after { right: 0; }
+    .or-separator span { background: white; padding: 0 10px; color: #888; position: relative; z-index: 1; }
+
+    .email-input { display: flex; border: 1px solid #ccc; border-radius: 4px; overflow: hidden; }
+    .email-input input { flex: 1; padding: 10px; border: none; outline: none; }
+    .email-input button { padding: 0 15px; background: #d33a2f; color: white; border: none; cursor: pointer; }
+
+    @media (max-width: 768px) {
+      .login-container { flex-direction: column; margin: 20px; }
+      .left-panel { border-right: none; border-bottom: 1px solid #ccc; }
+    }
+
+    .footer { background-color: #003366; color: white; text-align: center; padding: 20px 10px; }
+    .footer a { color: #fff; text-decoration: none; margin: 0 10px; border-right: 1px solid #aaa; padding: 0 10px; }
+    .footer a:last-child { border-right: none; }
+    .footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="main-content">
+    <header class="header">
+      <div class="header-inner">
+        <div class="logo-section">
+          <img src="Dev_Sanskriti_Vishwavidyalaya-removebg-preview.png" alt="Logo">
+          <h1>DSVV Alumni Engage</h1>
+        </div>
+        <nav class="navbar desktop-nav">
+          <ul class="nav-menu">
+            <li class="nav-item dropdown"><a href="#" class="nav-link">COMMUNITY ▾</a>
+              <ul class="dropdown-menu">
+                <li><a href="directory.html">Alumni Directory</a></li>
+                <li><a href="birthday.html">Alumni Birthdays</a></li>
+                <li><a href="#">Alumni Speaks</a></li>
+                <li><a href="news.html">Alumni News</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown"><a href="#" class="nav-link">EVENTS ▾</a>
+              <ul class="dropdown-menu">
+                <li><a href="Event.html">Events</a></li>
+                <li><a href="#">Galleries</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown"><a href="#" class="nav-link">GET INVOLVED ▾</a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Mentorship Program</a></li>
+                <li><a href="#">Volunteer</a></li>
+                <li><a href="#">Start a Chapter</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown"><a href="#" class="nav-link">ABOUT ▾</a>
+              <ul class="dropdown-menu">
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Executive Committee</a></li>
+                <li><a href="#">Announcements</a></li>
+                <li><a href="#">Infographics</a></li>
+                <li><a href="#" class="green">Communications</a></li>
+              </ul>
+            </li>
+          </ul>
+          <button class="login-button" onclick="location.href='Login.html'">LOGIN</button>
+        </nav>
+        <div class="mobile-toggle">
+          <button onclick="toggleMenu()">MENU</button>
+          <button class="login-button" onclick="location.href='Login.html'">LOGIN</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="menu-header">Menu <button onclick="toggleMenu()">✕</button></div>
+      <div class="nav-section">
+        <!-- menu links -->
+      </div>
+    </div>
+
+    <div class="headers">Signup / Login</div>
+
+    <div class="login-container">
+      <div class="left-panel">
+        <img src="Dev_Sanskriti_Vishwavidyalaya-removebg-preview.png" alt="IITR Logo">
+        <h2>Dev Sanskriti Vishwavidyalaya Alumni Engagement</h2>
+        <p>Sign up or log in to stay connected with your community</p>
+      </div>
+      <div class="right-panel">
+        <h3>Choose any one of the following to Signup/Login</h3>
+        <a href="https://www.facebook.com/login/" target="_blank" class="social-btn facebook">CONNECT WITH FACEBOOK</a>
+        <a href="https://accounts.google.com/signin" target="_blank" class="social-btn google">CONNECT WITH GOOGLE</a>
+        <a href="https://www.linkedin.com/login" target="_blank" class="social-btn linkedin">CONNECT WITH LINKEDIN</a>
+        <div class="or-separator"><span>OR</span></div>
+        <form class="email-input">
+          <input type="email" placeholder="Enter your Email..." required>
+          <button type="submit">➤</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <a href="index.html">HOME</a>
+    <a href="#">ABOUT</a>
+    <a href="#">CONTACT</a>
+    <a href="#">SITEMAP</a>
+    <a href="#">TERMS</a>
+    <a href="#">PRIVACY</a>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
