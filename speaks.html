@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="icon" href="Dev_Sanskriti_Vishwavidyalaya-removebg-preview.png">
-  <title>Alumni Events</title>
+  <link rel="icon" href="Dev_Sanskriti_Vishwavidyalaya-removebg-preview.png">
+  <title>Alumni Speaks</title>
+
   <style>
-     body {
+    body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
@@ -99,10 +100,10 @@
       background-color: #2e7d32;
       color: white;
       border: none;
-      border-radius: 4px;
-      font-weight: bold;
+      border-radius: 4px; 
       cursor: pointer;
       margin-left: 15px;
+       text-decoration: none;
     }
 
     /* Mobile Toggle */
@@ -197,140 +198,112 @@
     }
     
 
-    .container {
+  
+
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    .hero {
+      background: url('https://files.awgp.org/public_data/gurukulam/post/5511/YWOUF6ObsZBgk_1.jpg') no-repeat center center/cover;
+      height:550px;
       display: flex;
-      margin-top: 30px;
-      gap: 20px;
-    }
-
-    .sidebar {
-      width: 350px;
-    }
-
-    .search-box {
-      display: flex;
-      margin-bottom: 20px;
-    }
-
-    .search-box input {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-    }
-
-    .search-box button {
-      padding: 10px;
-      background-color: #d32f2f;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-
-    .categories {
-      background: #fff;
-      border: 1px solid #ddd;
-    }
-
-    .categories div {
-      padding: 15px;
-      border-bottom: 1px solid #eee;
-      cursor: pointer;
-    }
-
-    .categories div.active {
-      border-left: 3px solid #d32f2f;
+      align-items: center;
+      justify-content: center;
+      color:white;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+      font-size: 2rem;
       font-weight: bold;
     }
 
-    .events {
-      flex: 1;
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 2rem 1rem;
     }
 
-    .event-card {
-      background: #fff;
-      display: flex;
-      border: 1px solid #ddd;
-      margin-bottom: 20px;
-      padding: 15px;
-      gap: 20px;
+    .testimonial {
+      background-color: #fff;
+      border-left: 6px solid #003366;
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      transition: transform 0.2s;
     }
 
-    .event-card img {
-      width: 150px;
-      height: 200px;
-      object-fit: cover;
+    .testimonial:hover {
+      transform: scale(1.02);
     }
 
-    .event-details {
-      flex: 1;
+    .testimonial h3 {
+      margin: 0 0 0.5rem;
+      color: #003366;
     }
 
-    .event-title {
-      font-size: 18px;
-      font-weight: 600;
+    .testimonial p {
+      font-style: italic;
     }
 
-    .event-meta {
-      margin: 10px 0;
-      font-size: 14px;
-      color: #555;
+    .alumni-info {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #666;
     }
 
-    .past-event {
-      background-color: #ddd;
-      color: #555;
-      border-radius: 20px;
-      padding: 4px 10px;
-      display: inline-block;
-      font-size: 12px;
-    }
+   
 
-    .view-btn {
-      align-self: center;
-      background-color: #388e3c;
-      color: white;
-      padding: 8px 20px;
-      border: none;
-      cursor: pointer;
-      font-size: 14px;
-    }
-
-    @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-      }
-
-      .sidebar {
-        width: 100%;
-      }
-
-      .event-card {
-        flex-direction: column;
-        align-items: center;
+    /* Responsive */
+    @media (max-width: 600px) {
+      .hero {
+        font-size: 1.5rem;
+        padding: 1rem;
+        height: 180px;
         text-align: center;
       }
 
-      .event-details {
-        text-align: left;
-        width: 100%;
+      .testimonial {
+        padding: 1rem;
       }
     }
-
-    .no-events {
+    
+    .footer {
+      background-color:#003366 ; /* Dark background */
+      padding: 30px 0;
       text-align: center;
-      color: #888;
-      font-size: 16px;
-      margin-top: 40px;
+      margin-top:30px;
+      
     }
+
+    .footer a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 16px;
+      border-right: 1px solid #aaa;
+      padding: 0 10px;
+    }
+
+    .footer a:last-child {
+      border-right: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+      color: #ddd;
+    }
+    
   </style>
 </head>
 <body>
-   <header class="header">
+
+ <header class="header">
     <div class="header-inner">
       <!-- Left Logo & Title -->
       <div class="logo-section">
         <img src="Dev_Sanskriti_Vishwavidyalaya-removebg-preview.png" alt="Logo">
-        <h1>DSVV Alumni Engage</h1>
+        <h1>DSVV Alumni Engagement</h1>
       </div>
 
       <!-- Desktop Navigation -->
@@ -348,7 +321,7 @@
           <li class="nav-item dropdown">
             <a href="#" class="nav-link">EVENTS ▾</a>
             <ul class="dropdown-menu">
-              <li><a href="Event.html">Events</a></li>
+              <li><a href="Event.html">Events </a></li>
               <li><a href="#">Galleries</a></li>
             </ul>
           </li>
@@ -371,13 +344,18 @@
             </ul>
           </li>
         </ul>
-        <button class="login-button desktop-only">LOGIN</button>
+        <!-- Desktop Navigation -->
+<nav class="navbar desktop-nav">
+  
+  <a href="Login.html" class="login-button desktop-only">LOGIN</a>
+</nav>
+
       </nav>
 
       <!-- Mobile Toggle -->
       <div class="mobile-toggle">
         <button onclick="toggleMenu()">MENU</button>
-        <button class="login-button">LOGIN</button>
+       <a href="Login.html" class="login-button">LOGIN</a>
       </div>
     </div>
   </header>
@@ -401,7 +379,7 @@
       <details>
         <summary>Events</summary>
         <ul>
-          <li><a href="Event.html">Events</a></li>
+          <li><a href="Event.html">Events </a></li>
           <li><a href="#">Galleries</a></li>
         </ul>
       </details>
@@ -424,96 +402,43 @@
         </ul>
       </details>
     </div>
-  </div>  
+  </div>
 </header>
-<div class="container">
-  <div class="sidebar">
-    <div class="search-box">
-      <input type="text" id="searchInput" placeholder="Search by title..." oninput="filterEvents()" />
-      <button>🔍</button>
-    </div>
-    <div class="categories">
-      <div class="active" onclick="filterCategory('all')">All Events (2)</div>
-      <div onclick="filterCategory('past')">Past Events (2)</div>
-      <div onclick="filterCategory('upcoming')">Upcoming Events (0)</div>
-    </div>
+  <div class="hero">
+    Alumni Speaks
   </div>
 
-  <div class="events" id="eventList">
-    <!-- Event 1 -->
-    <div class="event-card" data-category="past" data-title="74th Annual General Body Meeting">
-      <img src="ima4.jpg" alt="event-img" />
-      <div class="event-details">
-        <div class="event-title">74th Annual General Body Meeting</div>
-        <div class="event-meta">📅 Dec 03, 2024<br>📍 DSVV Haridwar</div>
-        <span class="past-event">Past Event</span>
-      </div>
-      <button class="view-btn">VIEW</button>
+  <div class="container">
+    <div class="testimonial">
+      <h3>Ritika Sharma</h3>
+      <p>"DSVV gave me a new perspective on life. The environment, faculty, and values helped shape not just my career, but also my character."</p>
+      <div class="alumni-info">Batch of 2015, M.A. in Yoga</div>
     </div>
 
-    <!-- Event 2 -->
-    <div class="event-card" data-category="past" data-title="Felicitation of 1974 Batch & 1975 B.Arch Batch Alumni">
-      <img src="ima3.jpg" alt="event-img" />
-      <div class="event-details">
-        <div class="event-title">Felicitation of 1974 Batch & 1975 B.Arch Batch Alumni</div>
-        <div class="event-meta">📅 Dec 03, 2024 - 4:00 PM<br>📍 O.P. Jain Auditorium, DSVV haridwar</div>
-        <span class="past-event">Past Event</span>
-      </div>
-      <button class="view-btn">VIEW</button>
+    <div class="testimonial">
+      <h3>Arjun Mehta</h3>
+      <p>"The spiritual grounding I received at DSVV has stayed with me. It’s a place that nurtures inner growth along with academic learning."</p>
+      <div class="alumni-info">Batch of 2013, B.Sc. Environmental Science</div>
+    </div>
+
+    <div class="testimonial">
+      <h3>Neha Saini</h3>
+      <p>"Every corner of the campus holds a memory. DSVV isn't just a university, it's a family and a philosophy."</p>
+      <div class="alumni-info">Batch of 2018, Journalism and Mass Comm.</div>
     </div>
   </div>
-</div>
-
-<div class="no-events" id="noEventsMsg" style="display:none;">
-  No more events to display!
-</div>
-
+ <footer class="footer">
+    <a href="index.html">HOME</a>
+    <a href="#">ABOUT</a>
+    <a href="#">CONTACT</a>
+    <a href="#">SITEMAP</a>
+    <a href="#">TERMS</a>
+    <a href="#">PRIVACY</a>
+  </footer>
 <script>
-  
     function toggleMenu() {
       document.getElementById('mobileMenu').classList.toggle('active');
     }
-  
-  function filterCategory(category) {
-    const cards = document.querySelectorAll('.event-card');
-    const noEvents = document.getElementById('noEventsMsg');
-    let count = 0;
-
-    document.querySelectorAll('.categories div').forEach(div => div.classList.remove('active'));
-    event.target.classList.add('active');
-
-    cards.forEach(card => {
-      const cardCategory = card.getAttribute('data-category');
-      if (category === 'all' || cardCategory === category) {
-        card.style.display = 'flex';
-        count++;
-      } else {
-        card.style.display = 'none';
-      }
-    });
-
-    noEvents.style.display = count === 0 ? 'block' : 'none';
-  }
-
-  function filterEvents() {
-    const input = document.getElementById('searchInput').value.toLowerCase();
-    const cards = document.querySelectorAll('.event-card');
-    const noEvents = document.getElementById('noEventsMsg');
-    let count = 0;
-
-    cards.forEach(card => {
-      const title = card.getAttribute('data-title').toLowerCase();
-      if (title.includes(input)) {
-        card.style.display = 'flex';
-        count++;
-      } else {
-        card.style.display = 'none';
-      }
-    });
-
-    noEvents.style.display = count === 0 ? 'block' : 'none';
-  }
-</script>
-
+  </script>
 </body>
 </html>

@@ -341,7 +341,7 @@
             <ul class="dropdown-menu">
               <li><a href="directory.html">Alumni Directory</a></li>
               <li><a href="birthday.html">Alumni Birthdays</a></li>
-              <li><a href="#">Alumni Speaks</a></li>
+              <li><a href="speaks.html">Alumni Speaks</a></li>
               <li><a href="news.html">Alumni News</a></li>
             </ul>
           </li>
@@ -394,7 +394,7 @@
         <ul>
           <li><a href="directory.html">Alumni Directory</a></li>
           <li><a href="birthday.html">Alumni Birthday</a></li>
-          <li><a href="#">Alumni Speaks</a></li>
+          <li><a href="speaks.html">Alumni Speaks</a></li>
           <li><a href="news.html">Alumni News</a></li>
         </ul>
       </details>
@@ -504,6 +504,20 @@
     function toggleMenu() {
       document.getElementById('mobileMenu').classList.toggle('active');
     }
+    function filterBy(type) {
+  const value = prompt(`Enter ${type.replace('_', ' ')} to filter:`).toLowerCase();
+  const cards = document.querySelectorAll('.card');
+
+  cards.forEach(card => {
+    const cardValue = (card.dataset[type] || '').toLowerCase();
+    if (cardValue.includes(value)) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
     </script>
 </body>
 </html>

@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="icon" href="Dev_Sanskriti_Vishwavidyalaya-removebg-preview.png">
-  <title>Alumni Events</title>
+  <link rel="icon" href="Dev_Sanskriti_Vishwavidyalaya-removebg-preview.png">
+  <title>Galleries</title>
+
   <style>
-     body {
+    body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
@@ -99,10 +100,10 @@
       background-color: #2e7d32;
       color: white;
       border: none;
-      border-radius: 4px;
-      font-weight: bold;
+      border-radius: 4px; 
       cursor: pointer;
       margin-left: 15px;
+       text-decoration: none;
     }
 
     /* Mobile Toggle */
@@ -195,142 +196,122 @@
         justify-content: space-between;
       }
     }
-    
 
-    .container {
-      display: flex;
-      margin-top: 30px;
-      gap: 20px;
+    .gallery-container {
+  display: flex;           /* Side-by-side layout */
+  gap: 2rem;               /* Space between sidebar and gallery */
+  max-width: 1300px;
+  margin: auto;
+  padding: 2rem;
+}
+
+/* LEFT section: Categories */
+.gallery-categories {
+  flex: 0 0 200px;         /* Fixed width */
+}
+
+/* RIGHT section: Gallery cards */
+.gallery-grid {
+  flex: 1;                 /* Take remaining space */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+
+    .gallery-categories h3 {
+      margin-bottom: 1rem;
+      font-size: 18px;
+      text-transform: uppercase;
+      color: #222;
+      border-bottom: 2px solid #aaa;
+      padding-bottom: 5px;
     }
 
-    .sidebar {
-      width: 350px;
+    .category-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
 
-    .search-box {
-      display: flex;
-      margin-bottom: 20px;
-    }
-
-    .search-box input {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-    }
-
-    .search-box button {
-      padding: 10px;
-      background-color: #d32f2f;
-      color: white;
-      border: none;
+    .category-list li {
+      padding: 10px 15px;
+      background-color:#aaa;
+      margin-bottom: 10px;
+      border-left: 4px solid transparent;
       cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.3s, border-left 0.3s;
     }
 
-    .categories {
-      background: #fff;
-      border: 1px solid #ddd;
+    .category-list li:hover,
+    .category-list li.active {
+      background-color: #d9d9d9;
+      border-left: 4px solid #c62828;
     }
 
-    .categories div {
-      padding: 15px;
-      border-bottom: 1px solid #eee;
-      cursor: pointer;
-    }
-
-    .categories div.active {
-      border-left: 3px solid #d32f2f;
-      font-weight: bold;
-    }
-
-    .events {
+    /* Gallery Grid */
+    .gallery-grid {
       flex: 1;
-    }
-
-    .event-card {
-      background: #fff;
-      display: flex;
-      border: 1px solid #ddd;
-      margin-bottom: 20px;
-      padding: 15px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 20px;
     }
 
-    .event-card img {
-      width: 150px;
+    .gallery-card {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-card:hover {
+      transform: scale(1.02);
+    }
+
+    .gallery-card img {
+      width: 100%;
       height: 200px;
       object-fit: cover;
     }
 
-    .event-details {
-      flex: 1;
+    .gallery-content {
+      padding: 1rem;
     }
 
-    .event-title {
-      font-size: 18px;
-      font-weight: 600;
-    }
-
-    .event-meta {
-      margin: 10px 0;
-      font-size: 14px;
-      color: #555;
-    }
-
-    .past-event {
-      background-color: #ddd;
-      color: #555;
-      border-radius: 20px;
-      padding: 4px 10px;
-      display: inline-block;
-      font-size: 12px;
-    }
-
-    .view-btn {
-      align-self: center;
-      background-color: #388e3c;
-      color: white;
-      padding: 8px 20px;
-      border: none;
-      cursor: pointer;
-      font-size: 14px;
-    }
-
-    @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-      }
-
-      .sidebar {
-        width: 100%;
-      }
-
-      .event-card {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .event-details {
-        text-align: left;
-        width: 100%;
-      }
-    }
-
-    .no-events {
-      text-align: center;
-      color: #888;
+    .gallery-title {
+      font-weight: bold;
       font-size: 16px;
-      margin-top: 40px;
+      margin: 0 0 10px;
+    }
+
+    .gallery-count {
+      font-size: 14px;
+      color: #777;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .gallery-container {
+        flex-direction: column;
+      }
+
+      .gallery-categories {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
-   <header class="header">
+ <header class="header">
     <div class="header-inner">
       <!-- Left Logo & Title -->
       <div class="logo-section">
         <img src="Dev_Sanskriti_Vishwavidyalaya-removebg-preview.png" alt="Logo">
-        <h1>DSVV Alumni Engage</h1>
+        <h1>DSVV Alumni Engagement</h1>
       </div>
 
       <!-- Desktop Navigation -->
@@ -348,7 +329,7 @@
           <li class="nav-item dropdown">
             <a href="#" class="nav-link">EVENTS ▾</a>
             <ul class="dropdown-menu">
-              <li><a href="Event.html">Events</a></li>
+              <li><a href="Event.html">Events </a></li>
               <li><a href="#">Galleries</a></li>
             </ul>
           </li>
@@ -371,13 +352,18 @@
             </ul>
           </li>
         </ul>
-        <button class="login-button desktop-only">LOGIN</button>
+        <!-- Desktop Navigation -->
+<nav class="navbar desktop-nav">
+  
+  <a href="Login.html" class="login-button desktop-only">LOGIN</a>
+</nav>
+
       </nav>
 
       <!-- Mobile Toggle -->
       <div class="mobile-toggle">
         <button onclick="toggleMenu()">MENU</button>
-        <button class="login-button">LOGIN</button>
+       <a href="Login.html" class="login-button">LOGIN</a>
       </div>
     </div>
   </header>
@@ -401,7 +387,7 @@
       <details>
         <summary>Events</summary>
         <ul>
-          <li><a href="Event.html">Events</a></li>
+          <li><a href="Event.html">Events </a></li>
           <li><a href="#">Galleries</a></li>
         </ul>
       </details>
@@ -424,96 +410,54 @@
         </ul>
       </details>
     </div>
-  </div>  
+  </div>
 </header>
-<div class="container">
-  <div class="sidebar">
-    <div class="search-box">
-      <input type="text" id="searchInput" placeholder="Search by title..." oninput="filterEvents()" />
-      <button>🔍</button>
-    </div>
-    <div class="categories">
-      <div class="active" onclick="filterCategory('all')">All Events (2)</div>
-      <div onclick="filterCategory('past')">Past Events (2)</div>
-      <div onclick="filterCategory('upcoming')">Upcoming Events (0)</div>
-    </div>
-  </div>
+  <div class="gallery-container">
+    <!-- Sidebar -->
+    <aside class="gallery-categories">
+      <h3>Gallery Categories</h3>
+      <ul class="category-list">
+        <li class="active">All (3)</li>
+        <li>Reunions</li>
+        <li>Chapters</li>
+        <li>Campus Memories</li>
+      </ul>
+    </aside>
 
-  <div class="events" id="eventList">
-    <!-- Event 1 -->
-    <div class="event-card" data-category="past" data-title="74th Annual General Body Meeting">
-      <img src="ima4.jpg" alt="event-img" />
-      <div class="event-details">
-        <div class="event-title">74th Annual General Body Meeting</div>
-        <div class="event-meta">📅 Dec 03, 2024<br>📍 DSVV Haridwar</div>
-        <span class="past-event">Past Event</span>
+    <!-- Gallery Grid -->
+    <section class="gallery-grid">
+      <!-- Card 1 -->
+      <div class="gallery-card">
+        <img src="https://i.imgur.com/DY6gND0.jpg" alt="Gallery 1">
+        <div class="gallery-content">
+          <p class="gallery-title">A Night of Nostalgia: IIT Roorkee Alumni Reconnect in the East Zone</p>
+          <p class="gallery-count">9 Items</p>
+        </div>
       </div>
-      <button class="view-btn">VIEW</button>
-    </div>
 
-    <!-- Event 2 -->
-    <div class="event-card" data-category="past" data-title="Felicitation of 1974 Batch & 1975 B.Arch Batch Alumni">
-      <img src="ima3.jpg" alt="event-img" />
-      <div class="event-details">
-        <div class="event-title">Felicitation of 1974 Batch & 1975 B.Arch Batch Alumni</div>
-        <div class="event-meta">📅 Dec 03, 2024 - 4:00 PM<br>📍 O.P. Jain Auditorium, DSVV haridwar</div>
-        <span class="past-event">Past Event</span>
+      <!-- Card 2 -->
+      <div class="gallery-card">
+        <img src="https://i.imgur.com/GzBHG0c.jpg" alt="Gallery 2">
+        <div class="gallery-content">
+          <p class="gallery-title">Memorable Delhi Chapter Get-Together</p>
+          <p class="gallery-count">9 Items</p>
+        </div>
       </div>
-      <button class="view-btn">VIEW</button>
-    </div>
+
+      <!-- Card 3 -->
+      <div class="gallery-card">
+        <img src="https://i.imgur.com/YTt7k2I.jpg" alt="Gallery 3">
+        <div class="gallery-content">
+          <p class="gallery-title">Alumni Visit to Ancient Heritage Sites</p>
+          <p class="gallery-count">12 Items</p>
+        </div>
+      </div>
+    </section>
   </div>
-</div>
-
-<div class="no-events" id="noEventsMsg" style="display:none;">
-  No more events to display!
-</div>
-
-<script>
-  
+ <script>
     function toggleMenu() {
       document.getElementById('mobileMenu').classList.toggle('active');
     }
-  
-  function filterCategory(category) {
-    const cards = document.querySelectorAll('.event-card');
-    const noEvents = document.getElementById('noEventsMsg');
-    let count = 0;
-
-    document.querySelectorAll('.categories div').forEach(div => div.classList.remove('active'));
-    event.target.classList.add('active');
-
-    cards.forEach(card => {
-      const cardCategory = card.getAttribute('data-category');
-      if (category === 'all' || cardCategory === category) {
-        card.style.display = 'flex';
-        count++;
-      } else {
-        card.style.display = 'none';
-      }
-    });
-
-    noEvents.style.display = count === 0 ? 'block' : 'none';
-  }
-
-  function filterEvents() {
-    const input = document.getElementById('searchInput').value.toLowerCase();
-    const cards = document.querySelectorAll('.event-card');
-    const noEvents = document.getElementById('noEventsMsg');
-    let count = 0;
-
-    cards.forEach(card => {
-      const title = card.getAttribute('data-title').toLowerCase();
-      if (title.includes(input)) {
-        card.style.display = 'flex';
-        count++;
-      } else {
-        card.style.display = 'none';
-      }
-    });
-
-    noEvents.style.display = count === 0 ? 'block' : 'none';
-  }
-</script>
-
+  </script>
 </body>
 </html>
