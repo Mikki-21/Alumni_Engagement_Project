@@ -6,195 +6,55 @@
   <link rel="icon" href="Dev_Sanskriti_Vishwavidyalaya-removebg-preview.png">
   <title>Galleries</title>
 
-  <style>
-    body {
+ <style>
+    html, body {
+      height: 100%;
       margin: 0;
+      display: flex;
+      flex-direction: column;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    .header {
-      background-color: #003366;
-      padding: 10px 20px;
-    }
-
-    .header-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .logo-section {
-      display: flex;
-      align-items: center;
-    }
-
-    .logo-section img {
-      height: 50px;
-      margin-right: 10px;
-    }
-
-    .logo-section h1 {
-      font-size: 18px;
-      color: gold;
-      margin: 0;
-    }
-
-    /* Desktop Navbar */
-    .navbar {
-      display: flex;
-      align-items: center;
-    }
-
-    .nav-menu {
-      list-style: none;
-      display: flex;
-      padding: 0;
-      margin: 0;
-    }
-
-    .nav-item {
-      position: relative;
-    }
-
-    .nav-link {
-      display: block;
-      padding: 15px 15px;
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      cursor: pointer;
-    }
-
-    .dropdown-menu {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background-color: white;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-      list-style: none;
-      padding: 10px 0;
-      margin: 0;
-      display: none;
-      min-width: 200px;
-      z-index: 1000;
-    }
-
-    .dropdown-menu li a {
-      display: block;
-      padding: 10px 20px;
-      color: #555;
-      text-decoration: none;
-    }
-
-    .dropdown-menu li a:hover {
-      background-color: #eee;
-    }
-
-    .dropdown:hover .dropdown-menu {
-      display: block;
-    }
-
-    .login-button {
-      padding: 8px 16px;
-      background-color: #2e7d32;
-      color: white;
-      border: none;
-      border-radius: 4px; 
-      cursor: pointer;
-      margin-left: 15px;
-       text-decoration: none;
-    }
-
-    /* Mobile Toggle */
-    .mobile-toggle {
-      display: none;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .mobile-toggle button {
-      background: none;
-      border: none;
-      font-size: 16px;
-      color: white;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .mobile-toggle .login-button {
-      background-color: #2e7d32;
-      color: white;
-      padding: 8px 16px;
-      border: none;
-      border-radius: 4px;
-    }
-
-    .mobile-menu {
-      position: fixed;
-      top: 0;
-      left: -100%;
-      width: 80%;
-      height: 100vh;
-      background: #fff;
-      box-shadow: 2px 0 10px rgba(0,0,0,0.2);
-      padding: 20px;
+    .main-content {
+      flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      transition: left 0.3s ease;
-      z-index: 1000;
     }
 
-    .mobile-menu.active {
-      left: 0;
-    }
+    .header { background-color: #003366; padding: 10px 20px; }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+    .logo-section { display: flex; align-items: center; }
+    .logo-section img { height: 50px; margin-right: 10px; }
+    .logo-section h1 { font-size: 18px; color: gold; margin: 0; }
 
-    .mobile-menu .menu-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 20px;
-      font-weight: bold;
-      color: green;
-    }
+    .navbar { display: flex; align-items: center; }
+    .nav-menu { list-style: none; display: flex; padding: 0; margin: 0; }
+    .nav-item { position: relative; }
+    .nav-link { display: block; padding: 15px 15px; color: white; text-decoration: none; font-weight: 500; cursor: pointer; }
 
-    .mobile-menu .nav-section {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+    .dropdown-menu { position: absolute; top: 100%; left: 0; background: white; box-shadow: 0 8px 16px rgba(0,0,0,0.15); list-style: none; padding: 10px 0; margin: 0; display: none; min-width: 200px; z-index: 1000; }
+    .dropdown-menu li a { display: block; padding: 10px 20px; color: #555; text-decoration: none; }
+    .dropdown-menu li a:hover { background: #eee; }
+    .dropdown:hover .dropdown-menu { display: block; }
 
-    .mobile-menu .nav-section details summary {
-      font-size: 18px;
-      cursor: pointer;
-      font-weight: bold;
-    }
+    .login-button { padding: 8px 16px; background: #2e7d32; color: white; border: none; border-radius: 4px; cursor: pointer; margin-left: 15px; text-decoration: none; }
 
-    .mobile-menu li {
-      list-style: none;
-      padding-left: 20px;
-    }
+    .mobile-toggle { display: none; align-items: center; gap: 10px; }
+    .mobile-toggle button { background: none; border: none; font-size: 16px; color: white; cursor: pointer; font-weight: bold; }
+    .mobile-toggle .login-button { background: #2e7d32; color: white; padding: 8px 16px; border: none; border-radius: 4px; }
 
-    .mobile-menu a {
-      text-decoration: none;
-      color: #333;
-    }
+    .mobile-menu { position: fixed; top: 0; left: -100%; width: 80%; height: 100vh; background: #fff; box-shadow: 2px 0 10px rgba(0,0,0,0.2); padding: 20px; display: flex; flex-direction: column; gap: 20px; transition: left 0.3s ease; z-index: 1000; }
+    .mobile-menu.active { left: 0; }
+    .mobile-menu .menu-header { display: flex; justify-content: space-between; align-items: center; font-size: 20px; font-weight: bold; color: green; }
+    .mobile-menu .nav-section { display: flex; flex-direction: column; gap: 10px; }
+    .mobile-menu .nav-section details summary { font-size: 18px; cursor: pointer; font-weight: bold; }
+    .mobile-menu li { list-style: none; padding-left: 20px; }
+    .mobile-menu a { text-decoration: none; color: #333; }
 
-    /* Responsive */
     @media (max-width: 768px) {
-      .desktop-nav {
-        display: none;
-      }
-
-      .mobile-toggle {
-        display: flex;
-      }
-
-      .header-inner {
-        flex-wrap: nowrap;
-        justify-content: space-between;
-      }
+      .desktop-nav { display: none; }
+      .mobile-toggle { display: flex; }
+      .header-inner { flex-wrap: nowrap; justify-content: space-between; }
     }
 
     .gallery-container {
@@ -330,7 +190,7 @@
             <a href="#" class="nav-link">EVENTS ▾</a>
             <ul class="dropdown-menu">
               <li><a href="Event.html">Events </a></li>
-              <li><a href="#">Galleries</a></li>
+              <li><a href="gallery.html">Galleries</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -344,7 +204,7 @@
           <li class="nav-item dropdown">
             <a href="#" class="nav-link">ABOUT ▾</a>
             <ul class="dropdown-menu">
-              <li><a href="#">About Us</a></li>
+              <li><a href="About.html">About Us</a></li>
               <li><a href="#">Executive Committee</a></li>
               <li><a href="#">Announcements</a></li>
               <li><a href="#">Infographics</a></li>
@@ -388,7 +248,7 @@
         <summary>Events</summary>
         <ul>
           <li><a href="Event.html">Events </a></li>
-          <li><a href="#">Galleries</a></li>
+          <li><a href="gallery.html">Galleries</a></li>
         </ul>
       </details>
       <details>
@@ -402,7 +262,7 @@
       <details>
         <summary>About</summary>
         <ul>
-          <li><a href="#">About Us</a></li>
+          <li><a href="About.html">About Us</a></li>
           <li><a href="#">Executive Committee</a></li>
           <li><a href="#">Announcements</a></li>
           <li><a href="#">Infographics</a></li>
@@ -428,27 +288,27 @@
     <section class="gallery-grid">
       <!-- Card 1 -->
       <div class="gallery-card">
-        <img src="https://i.imgur.com/DY6gND0.jpg" alt="Gallery 1">
+        <img src="ima1.jpg" alt="Gallery 1">
         <div class="gallery-content">
-          <p class="gallery-title">A Night of Nostalgia: IIT Roorkee Alumni Reconnect in the East Zone</p>
+          <p class="gallery-title">Utsav Celebrate</p>
           <p class="gallery-count">9 Items</p>
         </div>
       </div>
 
       <!-- Card 2 -->
       <div class="gallery-card">
-        <img src="https://i.imgur.com/GzBHG0c.jpg" alt="Gallery 2">
+        <img src="ima2.jpg" alt="Gallery 2">
         <div class="gallery-content">
-          <p class="gallery-title">Memorable Delhi Chapter Get-Together</p>
+          <p class="gallery-title">Memorable Get-Together</p>
           <p class="gallery-count">9 Items</p>
         </div>
       </div>
 
       <!-- Card 3 -->
       <div class="gallery-card">
-        <img src="https://i.imgur.com/YTt7k2I.jpg" alt="Gallery 3">
+        <img src="ima3.jpg" alt="Gallery 3">
         <div class="gallery-content">
-          <p class="gallery-title">Alumni Visit to Ancient Heritage Sites</p>
+          <p class="gallery-title">Session</p>
           <p class="gallery-count">12 Items</p>
         </div>
       </div>

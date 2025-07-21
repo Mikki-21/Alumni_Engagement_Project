@@ -3,59 +3,123 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Responsive Navbar</title>
+   <link rel="icon" href="Dev_Sanskriti_Vishwavidyalaya-removebg-preview.png">
+  <title>Alumni Engagement</title>
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
-      font-family: Arial, sans-serif;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    header {
-      background-color:  #003366;
+    .header {
+      background-color: #003366;
       padding: 10px 20px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      position: relative;
-      z-index: 10;
     }
 
-    .top-bar {
+    .header-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
     }
 
-    .logo {
+    .logo-section {
       display: flex;
       align-items: center;
     }
 
-    .logo img {
+    .logo-section img {
       height: 50px;
       margin-right: 10px;
     }
 
-    .logo h1 {
+    .logo-section h1 {
       font-size: 18px;
       color: gold;
+      margin: 0;
     }
 
+    /* Desktop Navbar */
+    .navbar {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link {
+      display: block;
+      padding: 15px 15px;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: white;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+      list-style: none;
+      padding: 10px 0;
+      margin: 0;
+      display: none;
+      min-width: 200px;
+      z-index: 1000;
+    }
+
+    .dropdown-menu li a {
+      display: block;
+      padding: 10px 20px;
+      color: #555;
+      text-decoration: none;
+    }
+
+    .dropdown-menu li a:hover {
+      background-color: #eee;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    .login-button {
+      padding: 8px 16px;
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 4px; 
+      cursor: pointer;
+      margin-left: 15px;
+       text-decoration: none;
+    }
+
+    /* Mobile Toggle */
     .mobile-toggle {
       display: none;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .mobile-toggle button {
       background: none;
       border: none;
       font-size: 16px;
+      color: white;
       cursor: pointer;
-      color: black;
+      font-weight: bold;
     }
 
     .mobile-toggle .login-button {
@@ -64,74 +128,6 @@
       padding: 8px 16px;
       border: none;
       border-radius: 4px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .desktop-nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 10px;
-    }
-
-    .nav-left {
-      flex: 1;
-    }
-
-    .nav-right {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-      justify-content: flex-end;
-      flex: 1;
-    }
-
-    .nav-item {
-      position: relative;
-    }
-
-    .nav-link {
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      padding: 10px;
-    }
-
-    .dropdown {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: #fff;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-      display: none;
-      flex-direction: column;
-      z-index: 999;
-    }
-
-    .dropdown a {
-      padding: 10px;
-      color: #555;
-      text-decoration: none;
-      display: block;
-    }
-
-    .dropdown a:hover {
-      background: #f0f0f0;
-    }
-
-    .nav-item:hover .dropdown {
-      display: flex;
-    }
-
-    .login-button {
-      background-color: #2e7d32;
-      color: white;
-      padding: 8px 16px;
-      border: none;
-      border-radius: 4px;
-      font-weight: bold;
-      cursor: pointer;
     }
 
     .mobile-menu {
@@ -154,7 +150,7 @@
       left: 0;
     }
 
-    .menu-header {
+    .mobile-menu .menu-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -163,34 +159,29 @@
       color: green;
     }
 
-    .menu-header button {
-      background: none;
-      border: none;
-      font-size: 24px;
-      cursor: pointer;
-      color: black;
+    .mobile-menu .nav-section {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
-    .nav-section details {
-      font-size: 16px;
-    }
-
-    .nav-section summary {
+    .mobile-menu .nav-section details summary {
+      font-size: 18px;
       cursor: pointer;
-      padding: 10px 0;
       font-weight: bold;
     }
 
-    .nav-section li {
+    .mobile-menu li {
       list-style: none;
-      padding: 5px 0;
+      padding-left: 20px;
     }
 
-    .nav-section a {
-      color: #333;
+    .mobile-menu a {
       text-decoration: none;
+      color: #333;
     }
 
+    /* Responsive */
     @media (max-width: 768px) {
       .desktop-nav {
         display: none;
@@ -199,67 +190,112 @@
       .mobile-toggle {
         display: flex;
       }
-    }
-  </style>
-</head>
-<body>
 
-  <header>
-    <div class="top-bar">
-      <div class="logo">
+      .header-inner {
+        flex-wrap: nowrap;
+        justify-content: space-between;
+      }
+    }
+     body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color:green;
+      color: #fff;
+    }
+
+    .about-section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .about-section h1 {
+      font-size: 2em;
+      margin-bottom: 30px;
+    }
+
+    .about-section p {
+      line-height: 1.8;
+      font-size:18px;
+      color: #ffffffd9;
+      margin-bottom: 20px;
+      font-weight:bold ;
+    }
+
+    @media (max-width: 768px) {
+      .about-section {
+        padding: 40px 15px;
+      }
+      .about-section h1 {
+        font-size: 1.5em;
+      }
+    }
+    </style>
+    </head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <!-- Left Logo & Title -->
+      <div class="logo-section">
         <img src="Dev_Sanskriti_Vishwavidyalaya-removebg-preview.png" alt="Logo">
-        <h1>DSVV Alumni Engage</h1>
+        <h1>DSVV Alumni Engagement</h1>
       </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="navbar desktop-nav">
+        <ul class="nav-menu">
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link">COMMUNITY ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="directory.html">Alumni Directory</a></li>
+              <li><a href="birthday.html">Alumni Birthdays</a></li>
+              <li><a href="speaks.html">Alumni Speaks</a></li>
+              <li><a href="news.html">Alumni News</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link">EVENTS ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="Event.html">Events </a></li>
+              <li><a href="gallery.html">Galleries</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link">GET INVOLVED ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Mentorship Program</a></li>
+              <li><a href="#">Volunteer</a></li>
+              <li><a href="#">Start a Chapter</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link">ABOUT ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Executive Committee</a></li>
+              <li><a href="#">Announcements</a></li>
+              <li><a href="#">Infographics</a></li>
+              <li><a href="#" class="green">Communications</a></li>
+            </ul>
+          </li>
+        </ul>
+        <!-- Desktop Navigation -->
+<nav class="navbar desktop-nav">
+  
+  <a href="Login.html" class="login-button desktop-only">LOGIN</a>
+</nav>
+
+      </nav>
+
+      <!-- Mobile Toggle -->
       <div class="mobile-toggle">
-        <button id="menu-btn">MENU</button>
-        <button class="login-button">LOGIN</button>
+        <button onclick="toggleMenu()">MENU</button>
+       <a href="Login.html" class="login-button">LOGIN</a>
       </div>
     </div>
-
-    <nav class="desktop-nav">
-      <div class="nav-left"></div>
-      <div class="nav-right">
-        <div class="nav-item">
-          <a href="#" class="nav-link">Community</a>
-          <div class="dropdown">
-            <a href="#">Alumni Directory</a>
-            <a href="#">Alumni Birthday</a>
-            <a href="#">Alumni Speaks</a>
-            <a href="#">Alumni News</a>
-          </div>
-        </div>
-        <div class="nav-item">
-          <a href="#" class="nav-link">Events</a>
-          <div class="dropdown">
-            <a href="#">Upcoming Events</a>
-            <a href="#">Past Events</a>
-            <a href="#">Event Calendar</a>
-            <a href="#">Event Gallery</a>
-          </div>
-        </div>
-        <div class="nav-item">
-          <a href="#" class="nav-link">Get Involved</a>
-          <div class="dropdown">
-            <a href="#">Mentorship Program</a>
-            <a href="#">Volunteer</a>
-            <a href="#">Start a Chapter</a>
-          </div>
-        </div>
-        <div class="nav-item">
-          <a href="#" class="nav-link">About</a>
-          <div class="dropdown">
-            <a href="#">About Us</a>
-            <a href="#">Executive Committee</a>
-            <a href="#">Announcements</a>
-            <a href="#">Infographics</a>
-            <a href="#">Communications</a>
-          </div>
-        </div>
-        <button class="login-button">LOGIN</button>
-      </div>
-    </nav>
   </header>
 
+  <!-- Mobile Slide Menu -->
   <div class="mobile-menu" id="mobileMenu">
     <div class="menu-header">
       Menu
@@ -268,44 +304,74 @@
     <div class="nav-section">
       <details>
         <summary>Community</summary>
-        <li><a href="#">Alumni Directory</a></li>
-        <li><a href="#">Alumni Birthday</a></li>
-        <li><a href="#">Alumni Speaks</a></li>
-        <li><a href="#">Alumni News</a></li>
+        <ul>
+          <li><a href="directory.html">Alumni Directory</a></li>
+          <li><a href="birthday.html">Alumni Birthday</a></li>
+          <li><a href="speaks.html">Alumni Speaks</a></li>
+          <li><a href="news.html">Alumni News</a></li>
+        </ul>
       </details>
       <details>
         <summary>Events</summary>
-        <li><a href="#">Upcoming Events</a></li>
-        <li><a href="#">Past Events</a></li>
-        <li><a href="#">Event Calendar</a></li>
-        <li><a href="#">Event Gallery</a></li>
+        <ul>
+          <li><a href="Event.html">Events </a></li>
+          <li><a href="gallery.html">Galleries</a></li>
+        </ul>
       </details>
       <details>
         <summary>Get Involved</summary>
-        <li><a href="#">Mentorship Program</a></li>
-        <li><a href="#">Volunteer</a></li>
-        <li><a href="#">Start a Chapter</a></li>
+        <ul>
+          <li><a href="#">Mentorship Program</a></li>
+          <li><a href="#">Volunteer</a></li>
+          <li><a href="#">Start a Chapter</a></li>
+        </ul>
       </details>
       <details>
         <summary>About</summary>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Executive Committee</a></li>
-        <li><a href="#">Announcements</a></li>
-        <li><a href="#">Infographics</a></li>
-        <li><a href="#">Communications</a></li>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Executive Committee</a></li>
+          <li><a href="#">Announcements</a></li>
+          <li><a href="#">Infographics</a></li>
+          <li><a href="#" class="green">Communications</a></li>
+        </ul>
       </details>
     </div>
   </div>
+</header>
+<section class="about-section">
+    <h1>About DSVVAE</h1>
+   <p>
+     Dev Sanskriti Vishwavidyalaya (DSVV) is a premier institution located in the serene 
+     environment of Haridwar, Uttarakhand, founded with the vision of revitalizing Indian
+     culture and values through modern education. Established under the guidance of Pt.
+     Shriram Sharma Acharya, the founder of the All World Gayatri Pariwar, DSVV aims to 
+    create a new generation of youth who are intellectually sound, emotionally balanced, and
+     spiritually awakened.
+    </p>
+    <p>
+     The university stands out for its unique curriculum that integrates academic excellence 
+     with practical training in life skills, ethics, and social responsibility. It offers various
+     programs in disciplines such as Yogic Science, Indian Culture, Clinical Psychology,
+     Journalism and Mass Communication, Education, Computer Science, and Holistic Health.
+    </p>
+    <p>
+      DSVV promotes a lifestyle rooted in Indian traditions like yoga, meditation, and value-
+      based living. The university campus is designed to foster inner peace, discipline, and 
+      selfless service. Students are encouraged to participate in community service,
+     environmental conservation, and research with a strong emphasis on sustainable 
+     development and human values.
+   </p>
+    <p>
+     With national and international collaborations, DSVV has gained global recognition as a center for spiritual
+    education, cultural exchange, and transformative learning. It aspires to be a lighthouse of Indian wisdom for
+   the entire world, blending the best of ancient heritage and modern knowledge.
 
-  <script>
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobileMenu');
-
+  </section>
+<script>
     function toggleMenu() {
-      mobileMenu.classList.toggle('active');
+      document.getElementById('mobileMenu').classList.toggle('active');
     }
-
-    menuBtn.addEventListener('click', toggleMenu);
   </script>
-</body>
-</html>
+  </body>
+  </html>
