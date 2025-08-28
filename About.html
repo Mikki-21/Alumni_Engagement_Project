@@ -199,15 +199,15 @@
      body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color:green;
+      background-color:#1e4a2f;
       color: #fff;
     }
 
-    .about-section {
-      padding: 60px 20px;
+    /*.about-section {
+      padding: 80px 20px;
       max-width: 1000px;
       margin: auto;
-    }
+    }*/
 
     .about-section h1 {
       font-size: 2em;
@@ -219,7 +219,9 @@
       font-size:18px;
       color: #ffffffd9;
       margin-bottom: 20px;
-      font-weight:bold ;
+      text-align: justify;   /* Justifies the paragraph text */
+       text-justify: inter-word;
+      direction: ltr;        /* Ensures left-to-right direction */
     }
 
     @media (max-width: 768px) {
@@ -228,6 +230,103 @@
       }
       .about-section h1 {
         font-size: 1.5em;
+      }
+    }
+    .contact-header {
+      background-color: #1e4a2f;
+      padding: 40px 20px;
+      color: white;
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+      gap: 30px;
+    }
+
+    .info-box, .map-box {
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 20px;
+      flex: 1 1 400px;
+    }
+
+    .info-box h2, .form-box h2 {
+      margin-bottom: 20px;
+      font-size: 22px;
+      color: #333;
+    }
+
+    .info-box p, .info-box a {
+      color: #555;
+      font-size: 16px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .info-box a {
+      text-decoration: none;
+      color: #1e4a2f;
+    }
+
+    .map-box iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .form-box {
+      background-color: white;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 5px;
+      max-width: 600px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .form-box label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    .form-box input,
+    .form-box textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .form-box button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #1e4a2f;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .form-box button:hover {
+      background-color: #155c24;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        padding: 20px 15px;
+      }
+
+      .form-box {
+        margin: 20px 15px;
       }
     }
     </style>
@@ -263,19 +362,13 @@
           <li class="nav-item dropdown">
             <a href="#" class="nav-link">GET INVOLVED ▾</a>
             <ul class="dropdown-menu">
-              <li><a href="#">Mentorship Program</a></li>
-              <li><a href="#">Volunteer</a></li>
-              <li><a href="#">Start a Chapter</a></li>
+              <li><a href="mentornship.html">Mentorship Program</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
             <a href="#" class="nav-link">ABOUT ▾</a>
             <ul class="dropdown-menu">
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Executive Committee</a></li>
-              <li><a href="#">Announcements</a></li>
-              <li><a href="#">Infographics</a></li>
-              <li><a href="#" class="green">Communications</a></li>
+              <li><a href="About.html">About Us</a></li>
             </ul>
           </li>
         </ul>
@@ -321,19 +414,15 @@
       <details>
         <summary>Get Involved</summary>
         <ul>
-          <li><a href="#">Mentorship Program</a></li>
-          <li><a href="#">Volunteer</a></li>
-          <li><a href="#">Start a Chapter</a></li>
+          <li><a href="mentornship.html">Mentorship Program</a></li>
+         
         </ul>
       </details>
       <details>
         <summary>About</summary>
         <ul>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Executive Committee</a></li>
-          <li><a href="#">Announcements</a></li>
-          <li><a href="#">Infographics</a></li>
-          <li><a href="#" class="green">Communications</a></li>
+          <li><a href="About.html">About Us</a></li>
+          
         </ul>
       </details>
     </div>
@@ -368,6 +457,45 @@
    the entire world, blending the best of ancient heritage and modern knowledge.
 
   </section>
+   <div class="contact-header">
+    <h1>Contact Us</h1>
+  </div>
+
+  <div class="container">
+    <!-- Contact Info -->
+    <div class="info-box">
+      <h2>Contact Info</h2>
+      <p>IITR ALUMNI ASSOCIATION</p>
+      <p>Main Building,DSVV Haridwar,<br>Uttarakhand– 247667</p>
+      <p>📧dsvv.ac.in@gmail.com | dsvv@.ac.in</p>
+      <p>🔗 <a href="https://www.dsvv.ac.in/" target="_blank">https://www.dsvv.ac.in/</a></p>
+    </div>
+
+    <!-- Google Map -->
+    <div class="map-box">
+      <iframe 
+        src="https://maps.app.goo.gl/XH1PsDbe7tLn5Sdw5" 
+        allowfullscreen="" loading="lazy">
+      </iframe>
+    </div>
+  </div>
+
+  <!-- Contact Form -->
+  <div class="form-box">
+    <h2>Reach Out</h2>
+    <form>
+      <label for="name">Your Name *</label>
+      <input type="text" id="name" placeholder="Your Name" required>
+
+      <label for="email">Email *</label>
+      <input type="email" id="email" placeholder="Your Email" required>
+
+      <label for="message">Message *</label>
+      <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
 <script>
     function toggleMenu() {
       document.getElementById('mobileMenu').classList.toggle('active');

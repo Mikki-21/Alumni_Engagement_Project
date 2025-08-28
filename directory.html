@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="icon" href="Dev_Sanskriti_Vishwavidyalaya-removebg-preview.png">
   <title>Alumni Directory</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 <style>
     html, body {
       height: 100%;
@@ -86,11 +87,11 @@
 }
 
 .search-btn {
-  background-color: #d9534f;
+  background-color:#2e7d32 ;
   color: white;
   border: none;
   padding: 10px 12px;
-  font-size: 15px;
+  font-size: 16px;
   cursor: pointer;
   border-radius: 0 5px 5px 0;
 }
@@ -102,15 +103,43 @@
   border: none;
   margin-bottom: 10px;
   text-align: left;
-  font-size: 15px;
+  font-size: 17px;
   cursor: pointer;
   transition:  0.3s ease;
 }
 
 .filters button:hover {
-  background: #ddd;
+  background: white;
 }
+.filter-toggle {
+      display: block;
+      width: 100%;
+      background-color: #e0e0e0;
+      border: none;
+      text-align: left;
+      padding: 10px;
+      margin-top: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
 
+    .filter-content {
+      display: none;
+      margin: 10px 0;
+    }
+
+    .filter-content input[type="text"],
+    .filter-content select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .filter-content label {
+      display: block;
+      margin: 5px 0;
+    }
 /* Main content */
 .main-content {
   flex: 1;
@@ -215,19 +244,13 @@
           <li class="nav-item dropdown">
             <a href="#" class="nav-link">GET INVOLVED ▾</a>
             <ul class="dropdown-menu">
-              <li><a href="#">Mentorship Program</a></li>
-              <li><a href="#">Volunteer</a></li>
-              <li><a href="#">Start a Chapter</a></li>
+              <li><a href="mentornship.html">Mentorship Program</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
             <a href="#" class="nav-link">ABOUT ▾</a>
             <ul class="dropdown-menu">
               <li><a href="About.html">About Us</a></li>
-              <li><a href="#">Executive Committee</a></li>
-              <li><a href="#">Announcements</a></li>
-              <li><a href="#">Infographics</a></li>
-              <li><a href="#" class="green">Communications</a></li>
             </ul>
           </li>
         </ul>
@@ -268,19 +291,14 @@
       <details>
         <summary>Get Involved</summary>
         <ul>
-          <li><a href="#">Mentorship Program</a></li>
-          <li><a href="#">Volunteer</a></li>
-          <li><a href="#">Start a Chapter</a></li>
+          <li><a href="mentornship.html">Mentorship Program</a></li>
         </ul>
       </details>
       <details>
         <summary>About</summary>
         <ul>
           <li><a href="About.html">About Us</a></li>
-          <li><a href="#">Executive Committee</a></li>
-          <li><a href="#">Announcements</a></li>
-          <li><a href="#">Infographics</a></li>
-          <li><a href="#" class="green">Communications</a></li>
+          
         </ul>
       </details>
     </div>
@@ -293,74 +311,62 @@
         <h4>Filters</h4>
       <div class="search-section">
       <input type="text" class="search-box" placeholder="Enter Keyword.." />
-        <button class="search-btn">&#128269;</button>
+          <button class="search-btn"><i class="fas fa-search"></i></button>
       </div>
-      <div class="filters">
-        <button>Search by Role</button>
-        <button>Year of Joining</button>
-        <button>Year of Graduation</button>
-        <button>Course/Degree</button>
-        <button>Current City</button>
-        <button>Company</button>
-        <button>Designation</button>
-        <button>Work Industry</button>
-        <button>Other Institute</button>
-        <button>Other Degree</button>
-        <button>Other Department</button>
+ 
+    <!-- Role Filter -->
+    <button class="filter-toggle" onclick="toggleFilter('roleFilter')">Search by Role</button>
+    <div class="filter-content" id="roleFilter">
+      <select>
+        <option value="">Select Role</option>
+        <option value="Alumni">Alumni</option>
+        <option value="Faculty">Faculty</option>
+        <option value="Student">Student</option>
+      </select>
     </div>
+    <!-- Year of Graduation -->
+    <button class="filter-toggle" onclick="toggleFilter('gradFilter')">Year of Graduation</button>
+    <div class="filter-content" id="gradFilter">
+      <label><input type="checkbox" /> 2015</label>
+      <label><input type="checkbox" /> 2016</label>
+      <label><input type="checkbox" /> 2017</label>
+    </div>
+
+    <!-- Course / Degree -->
+    <button class="filter-toggle" onclick="toggleFilter('courseFilter')">Course/Degree</button>
+    <div class="filter-content" id="courseFilter">
+      <select>
+        <option value="">All</option>
+        <option value="BCA">BCA</option>
+        <option value="B.Sc">B.Sc(IT)</option>
+        <option value="MCA">MCA</option>
+      </select>
+    </div>
+
+    <!-- Current City -->
+    <button class="filter-toggle" onclick="toggleFilter('cityFilter')">Current City</button>
+    <div class="filter-content" id="cityFilter">
+      <input type="text" placeholder="Delhi" />
+      <input type="text" placeholder="Bangalore" />
+    </div>
+  </div>
+
     </aside>
 
     <!-- Main Content -->
-    <main class="main-content">
-      <div class="member-count">250 Members in community</div>
+  <main class="main-content">
+      <div class="member-count">150 Members in community</div>
       <h2>All Profiles</h2>
       <div class="card-grid">
 
-        <!-- Profile Card Example -->
-        <div class="card">
-          <img src="ima5.png" alt="Profile Image" />
-          <div class="card-body">
-            <h3>A. Shravan Kumar</h3>
-            <p>Class of 2009</p>
-            <p>MCA</p>
-            <p>Zurich, Zurich</p>
-          </div>
-        </div>
 
-        <div class="card">
-          <img src="ima6.png" alt="Profile Image" />
-          <div class="card-body">
-            <h3>Aakash Bharti</h3>
-            <p>Class of 2019</p>
-            <p>McA</p>
-            <p>Gurugram, Haryana</p>
-          </div>
-        </div>
-
-        <div class="card">
-          <img src="ima7.png" alt="Profile Image" />
-          <div class="card-body">
-            <h3>Aashish Aggarwal</h3>
-            <p>Class of 2006</p>
-            <p>BCA</p>
-            <p>Hisar, Haryana</p>
-          </div>
-        </div>
-
-        <div class="card">
-          <img src="ima8.png" alt="Profile Image" />
-          <div class="card-body">
-            <h3>Aashish Singh</h3>
-            <p>Class of 2006</p>
-            <p>BCA</p>
-            <p>Hyderabad, Telangana</p>
-          </div>
-        </div>
-
-      </div>
+       <div class="card-grid" id="cardGrid">
+      <!-- Profiles will be loaded here -->
+    </div>
     </main>
   </div>
   <script>
+    //Menu Option
     function toggleMenu() {
       document.getElementById('mobileMenu').classList.toggle('active');
     }
@@ -377,6 +383,45 @@
     }
   });
 }
+//Search Filter
+ function toggleFilter(id) {
+      const el = document.getElementById(id);
+      el.style.display = el.style.display === "none" ? "block" : "none";
+    }
+// Google Sheets
+  async function loadProfiles() {
+      const sheetID = '1-vjf8wPgn0zeY9LYezba2971jvJgXOyAlaydin_6UH4'; // Just the Sheet ID
+      const sheetName = 'Alumni'; // Make sure this matches your tab name
+      const url = `https://opensheet.elk.sh/${sheetID}/${sheetName}`;
+
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+
+        const cardGrid = document.getElementById("cardGrid");
+        cardGrid.innerHTML = "";
+
+        data.forEach(user => {
+          const card = document.createElement("div");
+          card.className = "card";
+
+          card.innerHTML = `
+            <img src="${user.Image || 'https://via.placeholder.com/200'}" alt="Profile Image" />
+            <div class="card-body">
+              <p><strong></strong> ${user.Name|| 'N/A'}</p>
+               <p><strong></strong> ${user.Year || 'N/A'}</p>
+              <p><strong></strong> ${user.Class || 'N/A'}</p>
+             <p><strong></strong> ${user.Address || 'N/A'}</p>
+            </div>
+          `;
+          cardGrid.appendChild(card);
+        });
+      } catch (error) {
+        console.error("Error fetching data from Google Sheets:", error);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", loadProfiles);
 
     </script>
 </body>

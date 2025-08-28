@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="icon" href="Dev_Sanskriti_Vishwavidyalaya-removebg-preview.png">
   <title>Alumni Events</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
   <style>
     html, body {
       height: 100%;
@@ -80,7 +82,7 @@
 
     .search-box button {
       padding: 10px;
-      background-color: #d32f2f;
+      background-color:#388e3c;
       color: white;
       border: none;
       cursor: pointer;
@@ -98,7 +100,7 @@
     }
 
     .categories div.active {
-      border-left: 3px solid #d32f2f;
+      border-left: 3px solid #388e3c;
       font-weight: bold;
     }
 
@@ -215,19 +217,15 @@
           <li class="nav-item dropdown">
             <a href="#" class="nav-link">GET INVOLVED ▾</a>
             <ul class="dropdown-menu">
-              <li><a href="#">Mentorship Program</a></li>
-              <li><a href="#">Volunteer</a></li>
-              <li><a href="#">Start a Chapter</a></li>
+              <li><a href="mentornship.html">Mentorship Program</a></li>
+              
             </ul>
           </li>
           <li class="nav-item dropdown">
             <a href="#" class="nav-link">ABOUT ▾</a>
             <ul class="dropdown-menu">
               <li><a href="About.html">About Us</a></li>
-              <li><a href="#">Executive Committee</a></li>
-              <li><a href="#">Announcements</a></li>
-              <li><a href="#">Infographics</a></li>
-              <li><a href="#" class="green">Communications</a></li>
+
             </ul>
           </li>
         </ul>
@@ -268,19 +266,13 @@
       <details>
         <summary>Get Involved</summary>
         <ul>
-          <li><a href="#">Mentorship Program</a></li>
-          <li><a href="#">Volunteer</a></li>
-          <li><a href="#">Start a Chapter</a></li>
+          <li><a href="mentornship.html">Mentorship Program</a></li>
         </ul>
       </details>
       <details>
         <summary>About</summary>
         <ul>
           <li><a href="About.html">About Us</a></li>
-          <li><a href="#">Executive Committee</a></li>
-          <li><a href="#">Announcements</a></li>
-          <li><a href="#">Infographics</a></li>
-          <li><a href="#" class="green">Communications</a></li>
         </ul>
       </details>
     </div>
@@ -290,7 +282,8 @@
   <div class="sidebar">
     <div class="search-box">
       <input type="text" id="searchInput" placeholder="Search by title..." oninput="filterEvents()" />
-      <button>🔍</button>
+     <button class="search-btn"><i class="fas fa-search"></i></button>
+
     </div>
     <div class="categories">
       <div class="active" onclick="filterCategory('all')">All Events (2)</div>
@@ -304,7 +297,7 @@
     <div class="event-card" data-category="past" data-title="74th Annual General Body Meeting">
       <img src="ima4.jpg" alt="event-img" />
       <div class="event-details">
-        <div class="event-title">74th Annual General Body Meeting</div>
+        <div class="event-title">Internship Meeting</div>
         <div class="event-meta">📅 Dec 03, 2024<br>📍 DSVV Haridwar</div>
         <span class="past-event">Past Event</span>
       </div>
@@ -315,8 +308,20 @@
     <div class="event-card" data-category="past" data-title="Felicitation of 1974 Batch & 1975 B.Arch Batch Alumni">
       <img src="ima3.jpg" alt="event-img" />
       <div class="event-details">
-        <div class="event-title">Felicitation of 1974 Batch & 1975 B.Arch Batch Alumni</div>
-        <div class="event-meta">📅 Dec 03, 2024 - 4:00 PM<br>📍 O.P. Jain Auditorium, DSVV haridwar</div>
+        <div class="event-title">UI & UX Design Workshop</div>
+        <div class="event-meta">📅 Dec 03, 2024 - 4:00 PM<br>📍Ramanujan Coding Club, DSVV haridwar</div>
+        <span class="past-event">Past Event</span>
+      </div>
+      <button class="view-btn">VIEW</button>
+    </div>
+  </div>
+</div>
+<!-- Event 3-->
+    <div class="event-card" data-category="past" data-title="Felicitation of 1974 Batch & 1975 B.Arch Batch Alumni">
+      <img src="ima3.jpg" alt="event-img" />
+      <div class="event-details">
+        <div class="event-title">UI & UX Design Workshop</div>
+        <div class="event-meta">📅 Dec 03, 2024 - 4:00 PM<br>📍Ramanujan Coding Club, DSVV haridwar</div>
         <span class="past-event">Past Event</span>
       </div>
       <button class="view-btn">VIEW</button>

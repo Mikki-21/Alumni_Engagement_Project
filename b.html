@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Events and Gallery</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Section Container */
+    .section-container {
+      padding: 30px 20px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      color: #004400;
+    }
+
+    .view-all-btn {
+      padding: 8px 18px;
+      font-size: 16px;
+      color: green;
+      background-color: white;
+      border: 2px solid green;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .view-all-btn:hover {
+      background-color: darkgreen;
+      color: white;
+    }
+
+    /* Grid Layout for Events & Gallery */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 15px;
+    }
+
+    .image-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .image-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .image-caption {
+      text-align: center;
+      margin-top: 8px;
+      font-size: 15px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #0b2e5e;
+      color: white;
+      padding: 40px 20px 20px;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .footer-column {
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .small-gap {
+      margin-right: -40px;
+    }
+
+    footer h3 {
+      color: gold;
+      margin-bottom: 10px;
+    }
+
+    footer ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    footer ul li a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    footer p {
+      margin: 6px 0;
+    }
+
+    .social-icons a {
+      color: white;
+      margin-right: 10px;
+      font-size: 18px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    @media (max-width: 768px) {
+      .footer-column {
+        flex: 100%;
+        margin-bottom: 20px;
+      }
+
+      .small-gap {
+        margin-right: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Events Section -->
+  <section class="section-container">
+    <div class="section-header">
+      <h2 class="section-title">Events</h2>
+      <a href="#" class="view-all-btn">View All</a>
+    </div>
+    <div class="image-grid">
+      <div class="image-card">
+        <img src="https://via.placeholder.com/600x400?text=Event+1" alt="Event 1">
+        <p class="image-caption"><i class="fa-solid fa-calendar-days"></i> August 1, 2025</p>
+      </div>
+      <div class="image-card">
+        <img src="https://via.placeholder.com/600x400?text=Event+2" alt="Event 2">
+        <p class="image-caption"><i class="fa-solid fa-calendar-days"></i> August 2, 2025</p>
+      </div>
+      <div class="image-card">
+        <img src="https://via.placeholder.com/600x400?text=Event+3" alt="Event 3">
+        <p class="image-caption"><i class="fa-solid fa-calendar-days"></i> August 3, 2025</p>
+      </div>
+      <div class="image-card">
+        <img src="https://via.placeholder.com/600x400?text=Event+4" alt="Event 4">
+        <p class="image-caption"><i class="fa-solid fa-calendar-days"></i> August 4, 2025</p>
+      </div>
+      <div class="image-card">
+        <img src="https://via.placeholder.com/600x400?text=Event+5" alt="Event 5">
+        <p class="image-caption"><i class="fa-solid fa-calendar-days"></i> August 5, 2025</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="section-container">
+    <div class="section-header">
+      <h2 class="section-title">Gallery</h2>
+      <a href="#" class="view-all-btn">View All</a>
+    </div>
+    <div class="image-grid">
+      <div class="image-card">
+        <img src="https://via.placeholder.com/600x400?text=Gallery+1" alt="Gallery 1">
+      </div>
+      <div class="image-card">
+        <img src="https://via.placeholder.com/600x400?text=Gallery+2" alt="Gallery 2">
+      </div>
+      <div class="image-card">
+        <img src="ima4.jpg" alt="Gallery 3">
+      </div>
+      <div class="image-card">
+        <img src="ima4.jpg" alt="Gallery 4">
+      </div>
+      <div class="image-card">
+        <img src="ima4.jpg" alt="Gallery 5">
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Alumni Engagement</h3>
+        <p>Connecting our alumni community with updates, events, and opportunities. Stay involved and support the legacy.</p>
+      </div>
+      <div class="footer-column small-gap">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Events</a></li>
+          <li><a href="#">Gallery</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-column small-gap">
+        <h3>Contact Us</h3>
+        <p>Email: alumni@dsvv.ac.in</p>
+        <p>Phone: +91-12345-67890</p>
+        <p>Address: DSVV Campus, Haridwar, India</p>
+      </div>
+      <div class="footer-column">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © 2025 Alumni Engagement | Developed by Software Development Cell, DSVV
+    </div>
+  </footer>
+
+</body>
+</html>

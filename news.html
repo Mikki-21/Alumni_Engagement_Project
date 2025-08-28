@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="icon" href="Dev_Sanskriti_Vishwavidyalaya-removebg-preview.png">
     <title>Alumni News</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
      <style>
     html, body {
       height: 100%;
@@ -95,7 +96,7 @@
 
     .search-box button {
       padding: 8px 12px;
-      background-color: #d33a2f;
+      background-color: #2b6c43;
       color: white;
       border: none;
       border-radius: 0 4px 4px 0;
@@ -182,6 +183,88 @@
         width: 100%;
       }
     }
+    
+
+    footer {
+  width: 100%;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+    .footer-section {
+      flex: 1 1 220px;
+      margin-bottom: 10px;
+    }
+
+    .footer-section h3,
+.footer-section h4 {
+  color: #ffcc00;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #ffcc00; /* yellow line */
+  display: inline-block; /* sirf text ke width tak line aayegi */
+}
+
+    .footer-links,
+    .footer-links li {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .social-icon {
+      color: white;
+      margin-right: 10px;
+      font-size: 20px;
+      text-decoration: none;
+      display: inline-block;
+      transition: color 0.3s ease;
+    }
+
+    .social-icon.fb:hover {
+      color: #3b5998; /* Facebook Blue */
+    }
+
+    .social-icon.tw:hover {
+      color: #1da1f2; /* Twitter Blue */
+    }
+
+    .social-icon.ln:hover {
+      color: #0a66c2; /* LinkedIn Blue */
+    }
+.social-icon.in:hover {
+      color: pink; /* Instagram Pink */
+    }
+    .footer-bottom {
+      text-align: center;
+      margin-top: 30px;
+      border-top: 1px solid #333;
+      padding-top: 10px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .footer-section {
+        flex: 1 1 100%;
+      }
+    }
+   
   </style>
 </head>
 <body>
@@ -215,19 +298,13 @@
           <li class="nav-item dropdown">
             <a href="#" class="nav-link">GET INVOLVED ▾</a>
             <ul class="dropdown-menu">
-              <li><a href="#">Mentorship Program</a></li>
-              <li><a href="#">Volunteer</a></li>
-              <li><a href="#">Start a Chapter</a></li>
+              <li><a href="mentornship.html">Mentorship Program</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
             <a href="#" class="nav-link">ABOUT ▾</a>
             <ul class="dropdown-menu">
               <li><a href="About.html">About Us</a></li>
-              <li><a href="#">Executive Committee</a></li>
-              <li><a href="#">Announcements</a></li>
-              <li><a href="#">Infographics</a></li>
-              <li><a href="#" class="green">Communications</a></li>
             </ul>
           </li>
         </ul>
@@ -268,19 +345,13 @@
       <details>
         <summary>Get Involved</summary>
         <ul>
-          <li><a href="#">Mentorship Program</a></li>
-          <li><a href="#">Volunteer</a></li>
-          <li><a href="#">Start a Chapter</a></li>
+          <li><a href="mentornship.html">Mentorship Program</a></li>
         </ul>
       </details>
       <details>
         <summary>About</summary>
         <ul>
           <li><a href="About.html">About Us</a></li>
-          <li><a href="#">Executive Committee</a></li>
-          <li><a href="#">Announcements</a></li>
-          <li><a href="#">Infographics</a></li>
-          <li><a href="#" class="green">Communications</a></li>
         </ul>
       </details>
     </div>
@@ -288,17 +359,16 @@
    <div class="main-container">
     <!-- Sidebar -->
     <div class="sidebar">
-      <div class="search-box">
-        <input type="text" placeholder="Search by title..." />
-        <button>🔍</button>
-      </div>
+     <div class="search-box">
+  <input type="text" id="searchInput" placeholder="Search by title..." />
+  <button class="search-btn"><i class="fas fa-search"></i></button>
+</div>
+
       <h3 class="category-title">CATEGORIES</h3>
       <ul class="category-list">
         <li style="font-weight:bold; border-left: 4px solid red; padding-left: 6px;">All Posts</li>
         <li>Categories</li>
         <li>Alumni News</li>
-        <li>DSVVAE Announcements</li>
-        <li>Minutes Of Meetings</li>
         <li>DSVVAE Communications</li>
       </ul>
     </div>
@@ -306,31 +376,121 @@
     <!-- Posts -->
     <div class="post-section">
       <div class="post-card">
-        <div class="post-date">📅 Jun 30, 2025</div>
+        <div class="post-date"><i class="fa-regular fa-calendar-days"></i> Jun 30, 2025</div>
         <div class="post-title">DSVVAE Communication - May 2025 Edition</div>
         <div class="tag">DSVVAE Communications</div>
         <div class="share-icon">🔗</div>
       </div>
 
       <div class="post-card">
-        <div class="post-date">📅 May 26, 2025</div>
+        <div class="post-date"><i class="fa-regular fa-calendar-days"></i> May 26, 2025</div>
         <div class="post-title">DSVVAE Communication - March-April 2025 Edition</div>
         <div class="tag">DSVVAE Communications</div>
         <div class="share-icon">🔗</div>
       </div>
 
       <div class="post-card">
-        <div class="post-date">📅 Mar 26, 2025</div>
-        <div class="post-title">DSVVAE Communication - February 2025 Edition</div>
-        <div class="tag">DSVVAE Communications</div>
+        <div class="post-date"><i class="fa-regular fa-calendar-days"></i> Mar 26, 2025</div>
+        <div class="post-title">Alumni News - February 2025 Edition</div>
+        <div class="tag">DSVVAE News</div>
         <div class="share-icon">🔗</div>
       </div>
+        <div class="post-card">
+        <div class="post-date"><i class="fa-regular fa-calendar-days"></i> Mar 26, 2025</div>
+        <div class="post-title">Alumni News - February 2025 Edition</div>
+        <div class="tag">DSVVAE News</div>
+        <div class="share-icon">🔗</div>
+        </div>
+          <div class="post-card">
+        <div class="post-date"><i class="fa-regular fa-calendar-days"></i> Mar 26, 2025</div>
+        <div class="post-title">Alumni News - February 2025 Edition</div>
+        <div class="tag">DSVVAE News</div>
+        <div class="share-icon">🔗</div>
+        </div>
+          <div class="post-card">
+        <div class="post-date"><i class="fa-regular fa-calendar-days"></i> Mar 26, 2025</div>
+        <div class="post-title">Alumni News - February 2025 Edition</div>
+        <div class="tag">DSVVAE News</div>
+        <div class="share-icon">🔗</div>
+        </div>
     </div>
   </div>
+    <!--Footer-->
+   <footer style="background-color: #003366; color: white; padding: 40px 20px 30px; font-family: Arial, sans-serif;">
+ <div class="footer-container">
+    <!-- About -->
+    <div class="footer-section">
+      <h3>Alumni Engagement</h3>
+      <p style="line-height: 1.6;">Connecting our alumni community with updates, events, and opportunities. Stay involved and support the legacy.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Event.html">Events</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="About.html">Contact</a></li>
+      </ul>
+    </div>
+
+
+    <!-- Contact Info -->
+    <div class="footer-section">
+      <h4>Contact Us</h4>
+      <p>Email: alumni@dsvv.ac.in</p>
+      <p>Phone: +91-12345-67890</p>
+      <p>Address: DSVV Campus, Haridwar, India</p>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+      <a href="#" class="social-icon fb"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="social-icon tw"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="social-icon ln"><i class="fab fa-linkedin-in"></i></a>
+     <a href="#" class="social-icon in"><i class="fa-brands fa-square-instagram"></i></a>
+    </div>
+  </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 Alumni Engagement | Developed by Software Development Cell, DSVV
+  </div>
+</footer>
+<!-- FOOTER END -->
   <script>
     function toggleMenu() {
       document.getElementById('mobileMenu').classList.toggle('active');
     }
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('active');
+  }
+
+  // Search functionality
+
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('active');
+  }
+
+  document.getElementById('searchInput').addEventListener('input', function () {
+    const query = this.value.toLowerCase();
+    const posts = document.querySelectorAll('.post-card');
+
+    posts.forEach(post => {
+      const title = post.querySelector('.post-title').textContent.toLowerCase();
+      if (title.includes(query)) {
+        post.style.display = 'block';
+      } else {
+        post.style.display = 'none';
+      }
+    });
+  });
+
+
+
     </script>
 </body>
 </html>

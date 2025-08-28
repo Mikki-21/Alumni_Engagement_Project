@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="icon" href="Dev_Sanskriti_Vishwavidyalaya-removebg-preview.png">
-  <title>Alumni Speaks</title>
-
+  <title>Mentorship Program </title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
   <style>
     html, body {
       height: 100%;
@@ -56,83 +56,103 @@
       .mobile-toggle { display: flex; }
       .header-inner { flex-wrap: nowrap; justify-content: space-between; }
     }
-    
-
-  
-
-    h1 {
+    * {
       margin: 0;
-      font-size: 2rem;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
     }
 
-    .hero {
-      background: url('https://files.awgp.org/public_data/gurukulam/post/5473/yaWCQtgW9Jfza3_476756859_1038638821632217_7783966687184253905_n.jpg') no-repeat center center/cover;
-      height:700px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color:white;
-      text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
-      font-size: 2rem;
-      font-weight: bold;
+    body {
+      background-color: #f4f6f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #1c4b2b;
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: auto;
       padding: 2rem 1rem;
     }
 
-    .testimonial {
-      background-color: #fff;
-      border-left: 6px solid #003366;
-      margin-bottom: 2rem;
-      padding: 1.5rem;
+    .section {
+      margin-bottom: 3rem;
+    }
+
+    .section h2 {
+      color: #1c4b2b;
+      margin-bottom: 1rem;
+    }
+
+    .benefits {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .benefit-box {
+      background: white;
+      padding: 1rem;
+      border-left: 4px solid #1c4b2b;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      border-radius: 8px;
-      transition: transform 0.2s;
+      flex: 1 1 45%;
     }
 
-    .testimonial:hover {
-      transform: scale(1.02);
+    .cta {
+      text-align: center;
+      margin-top: 3rem;
     }
 
-    .testimonial h3 {
-      margin: 0 0 0.5rem;
-      color: #003366;
+    .cta a {
+      background-color:#1c4b2b;
+      color: white;
+      padding: 0.8rem 2rem;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 6px;
+      transition: background 0.3s;
     }
 
-    .testimonial p {
-      font-style: italic;
+    .cta a:hover {
+      background-color: #1c4b2b;
     }
 
-    .alumni-info {
-      margin-top: 1rem;
-      font-size: 0.9rem;
-      color: #666;
+    footer {
+      background-color: #222;
+      color: #ccc;
+      text-align: center;
+      padding: 1.5rem 1rem;
     }
 
-   
-
-    /* Responsive */
-    @media (max-width: 600px) {
-      .hero {
-        font-size: 1.5rem;
-        padding: 1rem;
-        height: 180px;
-        text-align: center;
+    @media (max-width: 768px) {
+      .benefits {
+        flex-direction: column;
       }
 
-      .testimonial {
-        padding: 1rem;
+      header h1 {
+        font-size: 2rem;
       }
     }
-    
   </style>
 </head>
 <body>
-
- <header class="header">
+  <header class="header">
     <div class="header-inner">
       <!-- Left Logo & Title -->
       <div class="logo-section">
@@ -163,7 +183,6 @@
             <a href="#" class="nav-link">GET INVOLVED ▾</a>
             <ul class="dropdown-menu">
               <li><a href="mentornship.html">Mentorship Program</a></li>
-       
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -187,7 +206,7 @@
        <a href="Login.html" class="login-button">LOGIN</a>
       </div>
     </div>
-  </header>
+  
 
   <!-- Mobile Slide Menu -->
   <div class="mobile-menu" id="mobileMenu">
@@ -216,6 +235,7 @@
         <summary>Get Involved</summary>
         <ul>
           <li><a href="mentornship.html">Mentorship Program</a></li>
+        
         </ul>
       </details>
       <details>
@@ -227,31 +247,52 @@
     </div>
   </div>
 </header>
-  <div class="hero">
-    Alumni Speaks
-  </div>
+  <header>
+    <h1>DSVV Mentorship Program</h1>
+    <p>Empowering Alumni and Students to Grow Together</p>
+  </header>
 
   <div class="container">
-    <div class="testimonial">
-      <h3>Ritika Sharma</h3>
-      <p>"DSVV gave me a new perspective on life. The environment, faculty, and values helped shape not just my career, but also my character."</p>
-      <div class="alumni-info">Batch of 2015, M.A. in Yoga</div>
+
+    <section class="section">
+      <h2>About the Program</h2>
+      <p>Our mentorship program connects current students with experienced alumni to foster personal and professional development. It's an opportunity to learn, guide, and grow through meaningful connections.</p>
+    </section>
+
+    <section class="section">
+      <h2>Why Join?</h2>
+      <div class="benefits">
+        <div class="benefit-box">
+          <h3>For Students (Mentees)</h3>
+          <ul>
+            <li>Career guidance from industry professionals</li>
+            <li>Skill development and networking</li>
+            <li>Personal growth and confidence</li>
+          </ul>
+        </div>
+        <div class="benefit-box">
+          <h3>For Alumni (Mentors)</h3>
+          <ul>
+            <li>Give back to the community</li>
+            <li>Shape future leaders</li>
+            <li>Refine leadership and communication skills</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>How It Works</h2>
+      <p>The program runs in 3-month cycles. Mentors and mentees are matched based on interests, career goals, and experience. Weekly or bi-weekly check-ins are encouraged, with support from the alumni office throughout.</p>
+    </section>
+
+    <div class="cta">
+      <a href="Login.html">Register Now</a>
     </div>
 
-    <div class="testimonial">
-      <h3>Arjun Mehta</h3>
-      <p>"The spiritual grounding I received at DSVV has stayed with me. It’s a place that nurtures inner growth along with academic learning."</p>
-      <div class="alumni-info">Batch of 2013, B.Sc. Environmental Science</div>
-    </div>
-
-    <div class="testimonial">
-      <h3>Neha Saini</h3>
-      <p>"Every corner of the campus holds a memory. DSVV isn't just a university, it's a family and a philosophy."</p>
-      <div class="alumni-info">Batch of 2018, Journalism and Mass Comm.</div>
-    </div>
   </div>
- 
-<script>
+
+ <script>
     function toggleMenu() {
       document.getElementById('mobileMenu').classList.toggle('active');
     }

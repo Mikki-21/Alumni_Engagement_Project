@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
    <link rel="icon" href="Dev_Sanskriti_Vishwavidyalaya-removebg-preview.png">
   <title>Alumni Engagement</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
     html, body {
@@ -62,14 +63,15 @@
   display: block;
   max-width: 100%;
 }
-    @media (max-width: 768px) {
+   @media (max-width: 768px) {
       .hero-image {
          width: 100%;
   height: 100vh;       /* Full screen height */
-  object-fit: cover;   /* Crops to fill space */
+ object-fit: cover;   /* Crops to fill space */
   display: block;
       }
     }
+    
      .info-section {
       display: flex;
       justify-content: space-between;
@@ -116,210 +118,230 @@
       line-height: 1.5;
       margin-top: 0%;
     }
-    @media (max-width: 768px) {
+@media (max-width: 768px) {
   .info-section {
     display: flex;
-    flex-wrap: nowrap;                /* No wrap — horizontal scroll */
-    overflow-x: auto;                 /* Enable scroll */
-    scroll-snap-type: x mandatory;   /* Snap to cards */
-    -webkit-overflow-scrolling: touch; /* Smooth iOS scroll */
-    gap: 20px;
+    flex-wrap: nowrap;                /* ek line me */
+    overflow-x: auto;                 /* scroll enable */
+    scroll-snap-type: x mandatory;    /* snap effect */
+    -webkit-overflow-scrolling: touch;/* smooth iOS scroll */
+    gap: 15px;
     padding: 10px 15px;
   }
 
   .info-card {
-    flex: 0 0 80%;                    /* Show one card at a time mostly */
-    scroll-snap-align: start;        /* Snap from start */
-    min-width: 250px;                /* Set a min width for consistency */
-    margin-right: 10px;              /* Optional spacing */
+    flex: 0 0 80%;          /* ek card screen ke 80% width lega */
+    scroll-snap-align: start;
+    min-width: 250px;
+    margin-right: 10px;
+  }
+
+  .info-card:last-child {
+    margin-right: 0;        /* last card ka gap hatao */
   }
 }
 
- h2 {
+
+ * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 10px;
+    }
+
+    h2.section-title {
+      text-align: left;
       font-size: 28px;
-      margin-bottom: 20px;
-      padding: 0 20px;
-    }
-
-    .events-container {
-      display: flex;
-      gap: 30px;
-      flex-wrap: wrap;
-    }
-
-    .event-card {
-      width: 300px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      overflow: hidden;
-      background: #fff;
-      transition: transform 0.3s ease;
-    }
-
-    .event-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .event-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-
-    .event-content {
-      padding: 15px;
-    }
-
-    .event-title {
-      font-size: 18px;
-      font-weight: 600;
-      margin: 10px 0;
+      margin: 20px 0 10px 5px;
       color: #222;
     }
 
-    .badge {
-      background-color: #d32f2f;
-      color: white;
-      padding: 4px 10px;
-      font-size: 13px;
-      border-radius: 3px;
-      display: inline-block;
-      margin-bottom: 10px;
+    .full-width-section {
+      margin-bottom: 40px;
     }
 
-    .event-date {
-      font-size: 14px;
-      color: #555;
-      margin-bottom: 15px;
+    .grid-container {
       display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .event-date::before {
-      content: "📅";
-      font-size: 16px;
-    }
-
-    .view-btn {
-      background-color: #2e7d32;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 4px;
-      font-weight: bold;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-    }
-@media (max-width: 768px) {
-  .events-container {
-    justify-content: center;  /* ⬅️ Center event cards */
-  }
-}
-     .gallery-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-
-    .gallery-header h2 {
-      font-size: 28px;
-    }
-
-    .view-all-btn {
-      padding: 10px 20px;
-      border: 2px solid #2e7d32;
-      background-color: white;
-      color: #2e7d32;
-      border-radius: 5px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: 0.3s ease;
-    }
-
-    .view-all-btn:hover {
-      background-color: #2e7d32;
-      color: white;
-    }
-
-    .gallery-container {
-      display: flex;
-      gap: 30px;
       flex-wrap: wrap;
+      gap: 20px;
+      justify-content: flex-start;
     }
-
-    .gallery-card {
-      width: 300px;
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 5px 10px 5px;
+}
+.section-title {
+      font-size: 28px;
+      color: #222;
+    }
+  .view-all-btn {
+      padding: 8px 20px;
+      border: 2px solid green;
+      color: green;
+      background-color: transparent;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+  .view-all-btn:hover {
+      background-color: darkgreen;
+      color: white;
+      border-color: darkgreen;
+    }
+  .grid-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: flex-start;
+    }
+    .card {
+      background: #fff;
       border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       overflow: hidden;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-      background-color: #fff;
-      transition: 0.3s ease;
+      width: calc(20% - 20px);
+      transition: transform 0.3s;
     }
 
-    .gallery-card:hover {
+    .card:hover {
       transform: translateY(-5px);
     }
 
-    .gallery-card img {
+    .card img {
       width: 100%;
-      height: 200px;
+      height: 180px;
       object-fit: cover;
+      display: block;
     }
 
-    .gallery-info {
-      padding: 15px;
-    }
-
-    .gallery-title {
+    .card p {
+      padding: 12px 15px 4px 15px;
       font-size: 16px;
-      font-weight: 600;
-      color: #111;
-      margin-bottom: 10px;
+      font-weight: bold;
+      color: #000;
     }
 
-    .gallery-items {
-      text-align: right;
+    .card .event-date {
+      padding: 0 15px 12px 15px;
       font-size: 14px;
+      color: #444;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card .event-date i {
       color: #444;
     }
 
+    @media (max-width: 1024px) {
+      .card {
+        width: calc(33.333% - 20px);
+      }
+    }
+
     @media (max-width: 768px) {
-  .gallery-container {
-    justify-content: center;  /* ⬅️ Center gallery cards */
-  }
+      .card {
+        width: calc(50% - 20px);
+      }
+    }
+
+    @media (max-width: 500px) {
+      .card {
+        width: 100%;
+      }
+    }
+
+
+
+    footer {
+  width: 100%;
 }
 
-    .footer {
-      background-color:#003366 ; /* Dark background */
-      padding: 30px 0;
-      text-align: center;
-      margin-top:30px;
-      
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+    .footer-section {
+      flex: 1 1 220px;
+      margin-bottom: 10px;
     }
 
-    .footer a {
-      color: #fff;
+    .footer-section h3,
+.footer-section h4 {
+  color: #ffcc00;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #ffcc00; /* yellow line */
+  display: inline-block; /* sirf text ke width tak line aayegi */
+}
+
+    .footer-links,
+    .footer-links li {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links a {
+      color: white;
       text-decoration: none;
-      margin: 0 10px;
-      font-size: 16px;
-      border-right: 1px solid #aaa;
-      padding: 0 10px;
+      display: block;
+      margin-bottom: 8px;
     }
 
-    .footer a:last-child {
-      border-right: none;
-    }
-
-    .footer a:hover {
+    .footer-links a:hover {
       text-decoration: underline;
-      color: #ddd;
     }
-    
-    
+
+    .social-icon {
+      color: white;
+      margin-right: 10px;
+      font-size: 20px;
+      text-decoration: none;
+      display: inline-block;
+      transition: color 0.3s ease;
+    }
+
+    .social-icon.fb:hover {
+      color: #3b5998; /* Facebook Blue */
+    }
+
+    .social-icon.tw:hover {
+      color: #1da1f2; /* Twitter Blue */
+    }
+
+    .social-icon.ln:hover {
+      color: #0a66c2; /* LinkedIn Blue */
+    }
+.social-icon.in:hover {
+      color: pink; /* Instagram Pink */
+    }
+    .footer-bottom {
+      text-align: center;
+      margin-top: 30px;
+      border-top: 1px solid #333;
+      padding-top: 10px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .footer-section {
+        flex: 1 1 100%;
+      }
+    }
+   
   </style>
 </head>
 <body>
@@ -353,19 +375,13 @@
           <li class="nav-item dropdown">
             <a href="#" class="nav-link">GET INVOLVED ▾</a>
             <ul class="dropdown-menu">
-              <li><a href="#">Mentorship Program</a></li>
-              <li><a href="#">Volunteer</a></li>
-              <li><a href="#">Start a Chapter</a></li>
+              <li><a href="mentornship.html">Mentorship Program</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
             <a href="#" class="nav-link">ABOUT ▾</a>
             <ul class="dropdown-menu">
               <li><a href="About.html">About Us</a></li>
-              <li><a href="#">Executive Committee</a></li>
-              <li><a href="#">Announcements</a></li>
-              <li><a href="#">Infographics</a></li>
-              <li><a href="#" class="green">Communications</a></li>
             </ul>
           </li>
         </ul>
@@ -412,23 +428,17 @@
         <summary>Get Involved</summary>
         <ul>
           <li><a href="#">Mentorship Program</a></li>
-          <li><a href="#">Volunteer</a></li>
-          <li><a href="#">Start a Chapter</a></li>
         </ul>
       </details>
       <details>
         <summary>About</summary>
         <ul>
           <li><a href="About.html">About Us</a></li>
-          <li><a href="#">Executive Committee</a></li>
-          <li><a href="#">Announcements</a></li>
-          <li><a href="#">Infographics</a></li>
-          <li><a href="#" class="green">Communications</a></li>
         </ul>
       </details>
     </div>
   </div>
-</header>
+
  <img src="DSVV.png" alt="dsvv image" class="hero-image">
  <div class="info-section">
     <div class="info-card">
@@ -454,78 +464,122 @@
       <h3>Your Alumni Profile</h3>
       <p>Create & complete your alumni profile and remain connected with all opportunities matching your interest.</p>
     </div>
+</div>
+  <!-- Events Section -->
+ <section class="full-width-section">
+  <div class="section-header">
+    <h2 class="section-title">Events</h2>
+    <a href="events.html" class="view-all-btn">View All</a>
   </div>
-<h2>Events</h2>
-
-  <div class="events-container">
-    <!-- Event Card 1 -->
-
-    <div class="event-card">
-      <img src="ima3.jpg" alt="Event Image">
-      <div class="event-content">
-        <div class="event-title"> Annual General Body Meeting</div>
-        <div class="badge">Past Event</div>
-        <div class="event-date">Dec 03, 2024</div>
-        <a href="#" class="view-btn">View Event</a>
+    <div class="grid-container">
+      <div class="card">
+        <img src="ima4.jpg" alt="Event 1">
+        <p>Utsav Celebrate</p>
+        <div class="event-date"><i class="fa-regular fa-calendar-days"></i> 16 April 2025, 10:00 AM</div>
+      </div>
+      <div class="card">
+        <img src="ima3.jpg" alt="Event 2">
+        <p>Memorable Get-Together</p>
+        <div class="event-date"><i class="fa-regular fa-calendar-days"></i> 18 April 2025, 2:30 PM</div>
+      </div>
+      <div class="card">
+        <img src="ima4.jpg" alt="Event 3">
+        <p>Session</p>
+        <div class="event-date"><i class="fa-regular fa-calendar-days"></i> 20 April 2025, 11:00 AM</div>
+      </div>
+      <div class="card">
+        <img src="ima3.jpg" alt="Event 4">
+        <p>Leadership Talk</p>
+        <div class="event-date"><i class="fa-regular fa-calendar-days"></i> 25 April 2025, 9:00 AM</div>
+      </div>
+      <div class="card">
+        <img src="ima4.jpg" alt="Event 5">
+        <p>Workshop Highlights</p>
+        <div class="event-date"><i class="fa-regular fa-calendar-days"></i> 30 April 2025, 4:00 PM</div>
       </div>
     </div>
+  </section>
 
-    <!-- Event Card 2 -->
-    <div class="event-card">
-      <img src="ima4.jpg" alt="Event Image">
-      <div class="event-content">
-        <div class="event-title">Felicitation of Alumni</div>
-        <div class="badge">Past Event</div>
-        <div class="event-date">Dec 03, 2024 – 04:00 PM</div>
-        <a href="#" class="view-btn">View Event</a>
+  <!-- Gallery Section -->
+  <section class="full-width-section">
+  <div class="section-header">
+    <h2 class="section-title">Gallery</h2>
+    <a href="gallery.html" class="view-all-btn">View All</a>
+    </div>
+    <div class="grid-container">
+      <div class="card">
+        <img src="ima1.jpg" alt="Gallery 1">
+        <p>Gallery Moment 1</p>
+          <div class="event-date"><i class="fa-regular fa-calendar-days"></i> 25 April 2025, 9:00 AM</div>
       </div>
+      <div class="card">
+        <img src="ima2.jpg" alt="Gallery 2">
+        <p>Gallery Moment 2</p>
+        <div class="event-date"><i class="fa-regular fa-calendar-days"></i> 30 April 2025, 4:00 PM</div>
+      </div>
+      <div class="card">
+        <img src="ima3.jpg" alt="Gallery 3">
+        <p>Gallery Moment 3</p>
+       <div class="event-date"><i class="fa-regular fa-calendar-days"></i> 16 April 2025, 10:00 AM</div>
+      </div>
+      <div class="card">
+        <img src="ima2.jpg" alt="Gallery 4">
+        <p>Gallery Moment 4</p>
+       <div class="event-date"><i class="fa-regular fa-calendar-days"></i> 18 April 2025, 2:30 PM</div>
+      </div>
+      <div class="card">
+        <img src="ima3.jpg" alt="Gallery 5">
+        <p>Gallery Moment 5</p>
+       <div class="event-date"><i class="fa-regular fa-calendar-days"></i> 20 April 2025, 11:00 AM</div>
+      </div>
+    </div>
+  </section>
+  <!--Footer-->
+   <footer style="background-color: #003366; color: white; padding: 40px 30px 30px; font-family: Arial, sans-serif;">
+ <div class="footer-container">
+    <!-- About -->
+    <div class="footer-section">
+      <h3>Alumni Engagement</h3>
+      <p style="line-height: 1.6;">Connecting our alumni community with updates, events, and opportunities. Stay involved and support the legacy.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Event.html">Events</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="About.html">Contact</a></li>
+      </ul>
+    </div>
+
+
+    <!-- Contact Info -->
+    <div class="footer-section">
+      <h4>Contact Us</h4>
+      <p>Email: alumni@dsvv.ac.in</p>
+      <p>Phone: +91-12345-67890</p>
+      <p>Address: DSVV Campus, Haridwar, India</p>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+      <a href="#" class="social-icon fb"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="social-icon tw"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="social-icon ln"><i class="fab fa-linkedin-in"></i></a>
+     <a href="#" class="social-icon in"><i class="fa-brands fa-square-instagram"></i></a>
     </div>
   </div>
-</a>
-  <div class="gallery-header">
-    <h2>Gallery</h2>
-    <a href="#" class="view-all-btn">View All</a>
   </div>
 
-  <div class="gallery-container">
-
-    <!-- Gallery Card 1 -->
-    <div class="gallery-card">
-      <img src="ima1.jpg" alt="Gallery Image 1">
-      <div class="gallery-info">
-        <div class="gallery-title">utsav celebrate</div>
-        <div class="gallery-items">9 Items</div>
-      </div>
-    </div>
-
-    <!-- Gallery Card 2 -->
-    <div class="gallery-card">
-      <img src="ima2.jpg" alt="Gallery Image 2">
-      <div class="gallery-info">
-        <div class="gallery-title">Memorable Get-Together</div>
-        <div class="gallery-items">9 Items</div>
-      </div>
-    </div>
-
-    <!-- Gallery Card 3 -->
-    <div class="gallery-card">
-      <img src="ima3.jpg" alt="Gallery Image 3">
-      <div class="gallery-info">
-        <div class="gallery-title">Session</div>
-        <div class="gallery-items">6 Items</div>
-      </div>
-    </div>
-
+  <div class="footer-bottom">
+    © 2025 Alumni Engagement | Developed by Software Development Cell, DSVV
   </div>
-
-   <footer class="footer">
-    <a href="index.html">HOME</a>
-    <a href="#">ABOUT</a>
-    <a href="#">CONTACT</a>
-    <a href="#">SITEMAP</a>
-    <a href="#">TERMS</a>
-    <a href="#">PRIVACY</a>
-  </footer>
+</footer>
+<!-- FOOTER END -->
   <script>
     function toggleMenu() {
       document.getElementById('mobileMenu').classList.toggle('active');
@@ -533,3 +587,5 @@
   </script>
 </body>
 </html>
+
+  
