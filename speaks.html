@@ -5,76 +5,95 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="icon" href="Dev_Sanskriti_Vishwavidyalaya-removebg-preview.png">
   <title>Alumni Speaks</title>
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding-top: 70px; /* navbar ke liye space */
     }
 
-    .main-content {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
+    /* Header */
+    .header {
+      background-color: #003366;
+      padding: 10px 20px;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      z-index: 10000;
     }
-
-    .header { background-color: #003366; padding: 10px 20px; }
-    .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; }
     .logo-section { display: flex; align-items: center; }
     .logo-section img { height: 50px; margin-right: 10px; }
-    .logo-section h1 { font-size: 18px; color: gold; margin: 0; }
+    .logo-section h1 { font-size: 18px; color: gold; }
 
     .navbar { display: flex; align-items: center; }
-    .nav-menu { list-style: none; display: flex; padding: 0; margin: 0; }
+    .nav-menu { list-style: none; display: flex; margin: 0; padding: 0; }
     .nav-item { position: relative; }
-    .nav-link { display: block; padding: 15px 15px; color: white; text-decoration: none; font-weight: 500; cursor: pointer; }
-
-    .dropdown-menu { position: absolute; top: 100%; left: 0; background: white; box-shadow: 0 8px 16px rgba(0,0,0,0.15); list-style: none; padding: 10px 0; margin: 0; display: none; min-width: 200px; z-index: 1000; }
-    .dropdown-menu li a { display: block; padding: 10px 20px; color: #555; text-decoration: none; }
-    .dropdown-menu li a:hover { background: #eee; }
+    .nav-link {
+      padding: 15px; color: white; text-decoration: none;
+      font-weight: 500; cursor: pointer;
+    }
+    .dropdown-menu {
+      position: absolute; top: 100%; left: 0;
+      background: white; list-style: none;
+      padding: 10px 0; display: none;
+      min-width: 200px; box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+    .dropdown-menu li a {
+      display: block; padding: 10px 20px; color: #333; text-decoration: none;
+    }
     .dropdown:hover .dropdown-menu { display: block; }
+    .login-button {
+      padding: 8px 16px; background: #2e7d32;
+      color: white; border-radius: 4px;
+      margin-left: 15px; text-decoration: none;
+    }
 
-    .login-button { padding: 8px 16px; background: #2e7d32; color: white; border: none; border-radius: 4px; cursor: pointer; margin-left: 15px; text-decoration: none; }
-
+    /* Mobile */
     .mobile-toggle { display: none; align-items: center; gap: 10px; }
-    .mobile-toggle button { background: none; border: none; font-size: 16px; color: white; cursor: pointer; font-weight: bold; }
-    .mobile-toggle .login-button { background: #2e7d32; color: white; padding: 8px 16px; border: none; border-radius: 4px; }
-
-    .mobile-menu { position: fixed; top: 0; left: -100%; width: 80%; height: 100vh; background: #fff; box-shadow: 2px 0 10px rgba(0,0,0,0.2); padding: 20px; display: flex; flex-direction: column; gap: 20px; transition: left 0.3s ease; z-index: 1000; }
+    .mobile-toggle button { background: none; border: none; color: white; font-size: 16px; cursor: pointer; }
+    .mobile-menu {
+      position: fixed; top: 0; left: -100%; height: 100vh; width: 80%;
+      background: #fff; padding: 20px; transition: left 0.3s ease;
+      z-index: 20000; overflow-y: auto;
+    }
     .mobile-menu.active { left: 0; }
-    .mobile-menu .menu-header { display: flex; justify-content: space-between; align-items: center; font-size: 20px; font-weight: bold; color: green; }
-    .mobile-menu .nav-section { display: flex; flex-direction: column; gap: 10px; }
-    .mobile-menu .nav-section details summary { font-size: 18px; cursor: pointer; font-weight: bold; }
-    .mobile-menu li { list-style: none; padding-left: 20px; }
-    .mobile-menu a { text-decoration: none; color: #333; }
+    .mobile-menu .menu-header {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 20px; font-weight: bold; margin-bottom: 20px; color: #003366;
+    }
+    .mobile-menu details summary {
+      font-size: 18px; font-weight: bold; cursor: pointer;
+      margin: 10px 0; color: #333;
+    }
+    .mobile-menu ul { margin: 0 0 10px 15px; padding: 0; list-style: none; }
+    .mobile-menu li a { text-decoration: none; color: #003366; font-size: 16px; }
 
     @media (max-width: 768px) {
       .desktop-nav { display: none; }
       .mobile-toggle { display: flex; }
-      .header-inner { flex-wrap: nowrap; justify-content: space-between; }
-    }
-    
-
-  
-
-    h1 {
-      margin: 0;
-      font-size: 2rem;
     }
 
+    /* Hero */
     .hero {
-      background: url('https://files.awgp.org/public_data/gurukulam/post/5473/yaWCQtgW9Jfza3_476756859_1038638821632217_7783966687184253905_n.jpg') no-repeat center center/cover;
-      height:700px;
+      background: url('https://files.awgp.org/public_data/gurukulam/post/5473/yaWCQtgW9Jfza3_476756859_1038638821632217_7783966687184253905_n.jpg') 
+                  no-repeat center center/cover;
+      height: 100vh;   /* Full screen height */
       display: flex;
       align-items: center;
       justify-content: center;
-      color:white;
+      color: white;
       text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
       font-size: 2rem;
       font-weight: bold;
+       font-family: "Montserrat", sans-serif;
+
     }
 
     .container {
@@ -112,8 +131,6 @@
       color: #666;
     }
 
-   
-
     /* Responsive */
     @media (max-width: 600px) {
       .hero {
@@ -127,24 +144,99 @@
         padding: 1rem;
       }
     }
-    
+
+    /* Footer */
+    footer {
+      width: 100%;
+      margin-top: auto;
+      background-color: #003366;
+      color: white;
+      padding: 40px 30px 30px;
+      font-family: Arial, sans-serif;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .footer-section {
+      flex: 1 1 220px;
+      margin-bottom: 10px;
+    }
+
+    .footer-section h3,
+    .footer-section h4 {
+      color: #ffcc00;
+      margin-bottom: 10px;
+      padding-bottom: 5px;
+      border-bottom: 2px solid #ffcc00;
+      display: inline-block;
+    }
+
+    .footer-links,
+    .footer-links li {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .social-icon {
+      color: white;
+      margin-right: 10px;
+      font-size: 20px;
+      text-decoration: none;
+      display: inline-block;
+      transition: color 0.3s ease;
+    }
+
+    .social-icon.fb:hover { color: #3b5998; }
+    .social-icon.tw:hover { color: #1da1f2; }
+    .social-icon.ln:hover { color: #0a66c2; }
+    .social-icon.in:hover { color: pink; }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 30px;
+      border-top: 1px solid #333;
+      padding-top: 10px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .footer-section {
+        flex: 1 1 100%;
+      }
+    }
   </style>
 </head>
 <body>
 
- <header class="header">
+ <!-- Header -->
+  <header class="header">
     <div class="header-inner">
-      <!-- Left Logo & Title -->
       <div class="logo-section">
         <img src="Dev_Sanskriti_Vishwavidyalaya-removebg-preview.png" alt="Logo">
         <h1>DSVV Alumni Engagement</h1>
       </div>
-
-      <!-- Desktop Navigation -->
+      <!-- Desktop Menu -->
       <nav class="navbar desktop-nav">
         <ul class="nav-menu">
           <li class="nav-item dropdown">
-            <a href="#" class="nav-link">COMMUNITY ▾</a>
+            <a class="nav-link">COMMUNITY ▾</a>
             <ul class="dropdown-menu">
               <li><a href="directory.html">Alumni Directory</a></li>
               <li><a href="birthday.html">Alumni Birthdays</a></li>
@@ -153,105 +245,138 @@
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a href="#" class="nav-link">EVENTS ▾</a>
+            <a class="nav-link">EVENTS ▾</a>
             <ul class="dropdown-menu">
-              <li><a href="Event.html">Events </a></li>
+              <li><a href="Event.html">Events</a></li>
               <li><a href="gallery.html">Galleries</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a href="#" class="nav-link">GET INVOLVED ▾</a>
+            <a class="nav-link">GET INVOLVED ▾</a>
             <ul class="dropdown-menu">
               <li><a href="mentornship.html">Mentorship Program</a></li>
-       
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a href="#" class="nav-link">ABOUT ▾</a>
+            <a class="nav-link">ABOUT ▾</a>
             <ul class="dropdown-menu">
               <li><a href="About.html">About Us</a></li>
             </ul>
           </li>
         </ul>
-        <!-- Desktop Navigation -->
-<nav class="navbar desktop-nav">
-  
-  <a href="Login.html" class="login-button desktop-only">LOGIN</a>
-</nav>
-
+        <a href="Login.html" class="login-button">LOGIN</a>
       </nav>
-
       <!-- Mobile Toggle -->
       <div class="mobile-toggle">
         <button onclick="toggleMenu()">MENU</button>
-       <a href="Login.html" class="login-button">LOGIN</a>
+        <a href="Login.html" class="login-button">LOGIN</a>
       </div>
     </div>
   </header>
 
-  <!-- Mobile Slide Menu -->
+  <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
     <div class="menu-header">
-      Menu
-      <button onclick="toggleMenu()">✕</button>
+      Menu <button onclick="toggleMenu()">✕</button>
     </div>
-    <div class="nav-section">
-      <details>
-        <summary>Community</summary>
-        <ul>
-          <li><a href="directory.html">Alumni Directory</a></li>
-          <li><a href="birthday.html">Alumni Birthday</a></li>
-          <li><a href="speaks.html">Alumni Speaks</a></li>
-          <li><a href="news.html">Alumni News</a></li>
-        </ul>
-      </details>
-      <details>
-        <summary>Events</summary>
-        <ul>
-          <li><a href="Event.html">Events </a></li>
-          <li><a href="gallery.html">Galleries</a></li>
-        </ul>
-      </details>
-      <details>
-        <summary>Get Involved</summary>
-        <ul>
-          <li><a href="mentornship.html">Mentorship Program</a></li>
-        </ul>
-      </details>
-      <details>
-        <summary>About</summary>
-        <ul>
-          <li><a href="About.html">About Us</a></li>
-        </ul>
-      </details>
-    </div>
+    <details>
+      <summary>Community</summary>
+      <ul>
+        <li><a href="directory.html">Alumni Directory</a></li>
+        <li><a href="birthday.html">Alumni Birthdays</a></li>
+        <li><a href="speaks.html">Alumni Speaks</a></li>
+        <li><a href="news.html">Alumni News</a></li>
+      </ul>
+    </details>
+    <details>
+      <summary>Events</summary>
+      <ul>
+        <li><a href="Event.html">Events</a></li>
+        <li><a href="gallery.html">Galleries</a></li>
+      </ul>
+    </details>
+    <details>
+      <summary>Get Involved</summary>
+      <ul><li><a href="mentornship.html">Mentorship Program</a></li></ul>
+    </details>
+    <details>
+      <summary>About</summary>
+      <ul><li><a href="About.html">About Us</a></li></ul>
+    </details>
   </div>
-</header>
-  <div class="hero">
-    Alumni Speaks
-  </div>
-
-  <div class="container">
-    <div class="testimonial">
-      <h3>Ritika Sharma</h3>
-      <p>"DSVV gave me a new perspective on life. The environment, faculty, and values helped shape not just my career, but also my character."</p>
-      <div class="alumni-info">Batch of 2015, M.A. in Yoga</div>
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+    <div class="hero">
+      Alumni Speaks
     </div>
 
-    <div class="testimonial">
-      <h3>Arjun Mehta</h3>
-      <p>"The spiritual grounding I received at DSVV has stayed with me. It’s a place that nurtures inner growth along with academic learning."</p>
-      <div class="alumni-info">Batch of 2013, B.Sc. Environmental Science</div>
-    </div>
+    <div class="container">
+      <div class="testimonial">
+        <h3>Ritika Sharma</h3>
+        <p>"DSVV gave me a new perspective on life. The environment, faculty, and values helped shape not just my career, but also my character."</p>
+        <div class="alumni-info">Batch of 2015, M.A. in Yoga</div>
+      </div>
 
-    <div class="testimonial">
-      <h3>Neha Saini</h3>
-      <p>"Every corner of the campus holds a memory. DSVV isn't just a university, it's a family and a philosophy."</p>
-      <div class="alumni-info">Batch of 2018, Journalism and Mass Comm.</div>
+      <div class="testimonial">
+        <h3>Arjun Mehta</h3>
+        <p>"The spiritual grounding I received at DSVV has stayed with me. It’s a place that nurtures inner growth along with academic learning."</p>
+        <div class="alumni-info">Batch of 2013, B.Sc. Environmental Science</div>
+      </div>
+
+      <div class="testimonial">
+        <h3>Neha Saini</h3>
+        <p>"Every corner of the campus holds a memory. DSVV isn't just a university, it's a family and a philosophy."</p>
+        <div class="alumni-info">Batch of 2018, Journalism and Mass Comm.</div>
+      </div>
     </div>
   </div>
- 
-<script>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <!-- About -->
+      <div class="footer-section">
+        <h3>Alumni Engagement</h3>
+        <p style="line-height: 1.6;">Connecting our alumni community with updates, events, and opportunities. Stay involved and support the legacy.</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="Event.html">Events</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="About.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="footer-section">
+        <h4>Contact Us</h4>
+        <p>Email: alumni@dsvv.ac.in</p>
+        <p>Phone: +91-12345-67890</p>
+        <p>Address: DSVV Campus, Haridwar, India</p>
+      </div>
+
+      <!-- Social Media -->
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#" class="social-icon fb"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon tw"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon ln"><i class="fab fa-linkedin-in"></i></a>
+   <a href="#" class="social-icon in"><i class="bi bi-instagram"></i></a> 
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © 2025 Alumni Engagement | Developed by Software Development Cell, DSVV
+    </div>
+  </footer>
+
+  <script>
     function toggleMenu() {
       document.getElementById('mobileMenu').classList.toggle('active');
     }

@@ -3,115 +3,132 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="icon" href="Dev_Sanskriti_Vishwavidyalaya-removebg-preview.png">
+  <link rel="icon" href="Dev_Sanskriti_Vishwavidyalaya-removebg-preview.png">
   <title>Alumni Directory</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-<style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <style>
+   * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding-top: 70px; /* navbar ke liye space */
     }
 
-    .main-content {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
+    /* Header */
+    .header {
+      background-color: #003366;
+      padding: 10px 20px;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      z-index: 10000;
     }
-
-    .header { background-color: #003366; padding: 10px 20px; }
-    .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; }
     .logo-section { display: flex; align-items: center; }
     .logo-section img { height: 50px; margin-right: 10px; }
-    .logo-section h1 { font-size: 18px; color: gold; margin: 0; }
+    .logo-section h1 { font-size: 18px; color: gold; }
 
     .navbar { display: flex; align-items: center; }
-    .nav-menu { list-style: none; display: flex; padding: 0; margin: 0; }
+    .nav-menu { list-style: none; display: flex; margin: 0; padding: 0; }
     .nav-item { position: relative; }
-    .nav-link { display: block; padding: 15px 15px; color: white; text-decoration: none; font-weight: 500; cursor: pointer; }
-
-    .dropdown-menu { position: absolute; top: 100%; left: 0; background: white; box-shadow: 0 8px 16px rgba(0,0,0,0.15); list-style: none; padding: 10px 0; margin: 0; display: none; min-width: 200px; z-index: 1000; }
-    .dropdown-menu li a { display: block; padding: 10px 20px; color: #555; text-decoration: none; }
-    .dropdown-menu li a:hover { background: #eee; }
+    .nav-link {
+      padding: 15px; color: white; text-decoration: none;
+      font-weight: 500; cursor: pointer;
+    }
+    .dropdown-menu {
+      position: absolute; top: 100%; left: 0;
+      background: white; list-style: none;
+      padding: 10px 0; display: none;
+      min-width: 200px; box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+    .dropdown-menu li a {
+      display: block; padding: 10px 20px; color: #333; text-decoration: none;
+    }
     .dropdown:hover .dropdown-menu { display: block; }
+    .login-button {
+      padding: 8px 16px; background: #2e7d32;
+      color: white; border-radius: 4px;
+      margin-left: 15px; text-decoration: none;
+    }
 
-    .login-button { padding: 8px 16px; background: #2e7d32; color: white; border: none; border-radius: 4px; cursor: pointer; margin-left: 15px; text-decoration: none; }
-
+    /* Mobile */
     .mobile-toggle { display: none; align-items: center; gap: 10px; }
-    .mobile-toggle button { background: none; border: none; font-size: 16px; color: white; cursor: pointer; font-weight: bold; }
-    .mobile-toggle .login-button { background: #2e7d32; color: white; padding: 8px 16px; border: none; border-radius: 4px; }
-
-    .mobile-menu { position: fixed; top: 0; left: -100%; width: 80%; height: 100vh; background: #fff; box-shadow: 2px 0 10px rgba(0,0,0,0.2); padding: 20px; display: flex; flex-direction: column; gap: 20px; transition: left 0.3s ease; z-index: 1000; }
+    .mobile-toggle button { background: none; border: none; color: white; font-size: 16px; cursor: pointer; }
+    .mobile-menu {
+      position: fixed; top: 0; left: -100%; height: 100vh; width: 80%;
+      background: #fff; padding: 20px; transition: left 0.3s ease;
+      z-index: 20000; overflow-y: auto;
+    }
     .mobile-menu.active { left: 0; }
-    .mobile-menu .menu-header { display: flex; justify-content: space-between; align-items: center; font-size: 20px; font-weight: bold; color: green; }
-    .mobile-menu .nav-section { display: flex; flex-direction: column; gap: 10px; }
-    .mobile-menu .nav-section details summary { font-size: 18px; cursor: pointer; font-weight: bold; }
-    .mobile-menu li { list-style: none; padding-left: 20px; }
-    .mobile-menu a { text-decoration: none; color: #333; }
+    .mobile-menu .menu-header {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 20px; font-weight: bold; margin-bottom: 20px; color: #003366;
+    }
+    .mobile-menu details summary {
+      font-size: 18px; font-weight: bold; cursor: pointer;
+      margin: 10px 0; color: #333;
+    }
+    .mobile-menu ul { margin: 0 0 10px 15px; padding: 0; list-style: none; }
+    .mobile-menu li a { text-decoration: none; color: #003366; font-size: 16px; }
 
     @media (max-width: 768px) {
       .desktop-nav { display: none; }
       .mobile-toggle { display: flex; }
-      .header-inner { flex-wrap: nowrap; justify-content: space-between; }
     }
-/* Layout */
-.container {
-  display: flex;
-  flex-wrap: wrap;
-}
+    /* Layout */
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+    }
 
-/* Sidebar */
-.sidebar {
-  width: 350px;
-  background: #fff;
-  padding: 20px;
-  border-right: 1px solid #ccc;
-}
-.h4{
-    margin-bottom:20px;
-}
-.search-section {
-  display: flex;
-  margin-bottom: 20px;
-}
+    /* Sidebar */
+    .sidebar {
+      width: 350px;
+      background: #fff;
+      padding: 20px;
+      border-right: 1px solid #ccc;
+    }
 
-.search-box {
-  flex: 1;
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-right: none;
-  border-radius: 5px 0 0 5px;
-}
+    .search-section {
+      display: flex;
+      margin-bottom: 20px;
+    }
 
-.search-btn {
-  background-color:#2e7d32 ;
-  color: white;
-  border: none;
-  padding: 10px 12px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 0 5px 5px 0;
-}
+    .search-box {
+      flex: 1;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-right: none;
+      border-radius: 5px 0 0 5px;
+    }
 
-.filters button {
-  width: 100%;
-  padding: 12px;
-  background: #eee;
-  border: none;
-  margin-bottom: 10px;
-  text-align: left;
-  font-size: 17px;
-  cursor: pointer;
-  transition:  0.3s ease;
-}
+    .search-btn {
+      background-color:#2e7d32 ;
+      color: white;
+      border: none;
+      padding: 10px 12px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 0 5px 5px 0;
+    }
 
-.filters button:hover {
-  background: white;
-}
-.filter-toggle {
+    .filters button {
+      width: 100%;
+      padding: 12px;
+      background: #eee;
+      border: none;
+      margin-bottom: 10px;
+      text-align: left;
+      font-size: 17px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .filters button:hover { background: white; }
+
+    .filter-toggle {
       display: block;
       width: 100%;
       background-color: #e0e0e0;
@@ -140,93 +157,219 @@
       display: block;
       margin: 5px 0;
     }
-/* Main content */
-.main-content {
-  flex: 1;
-  padding: 30px;
-}
+    
 
-.member-count {
-  background-color: #2e7d32;
-  color: white;
-  padding: 15px;
-  font-weight: bold;
-  border-radius: 4px;
-  margin-bottom: 20px;
-}
+    /* Right Section */
+    .right-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
 
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-}
+    /* Member count full width */
+    .top-header {
+      display: flex;
+      flex-direction: column;
+      
+      text-align: center;
+      gap: 10px;
+      margin: 0 0;
+      width: 100%;
+    }
 
-.card {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-}
+    .member-count {
+      width: 100%;
+      background-color: #2e7d32;
+      color: white;
+      padding: 15px;
+      font-weight: bold;
+      border-radius: 4px;
+      text-align: left;
+      font-size: 18px;
+    }
 
-.card:hover {
-  transform: scale(1.02);
-}
+    .top-header h2 {
+      margin: 0;
+      font-size: 25px;
+      color: #333;
+      font-weight:bold ;
+      text-align:left;
+      padding:10px;
+    }
 
-.card img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
+    /* Main content */
+    .main-content {
+      flex: 1;
+      padding: 30px;
+    }
 
-.card-body {
-  padding: 15px;
-}
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
 
-.card-body h3 {
-  font-size: 18px;
-  margin-bottom: 8px;
-}
+    .card {
+        width:260px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
 
-.card-body p {
-  font-size: 14px;
-  color: #555;
-}
+    .card:hover { transform: scale(1.02); }
 
-/* Responsive styles */
-@media (max-width: 768px) {
+    .card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit:cover;
+    }
+
+    .card-body { padding: 15px; }
+
+    .card-body h3 { font-size: 18px; margin-bottom: 8px; }
+
+    .card-body p { font-size: 14px; color: #555; }
+
+    /* Responsive styles */
+   @media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* sidebar aur content ek ke niche ek */
+  }
+
   .sidebar {
-    width: 100%;
+    width: 100%; /* puri width le */
     border-right: none;
     border-bottom: 1px solid #ccc;
+    padding: 15px;
   }
 
-  .main-content {
-    padding: 20px;
+  .right-section {
+    width: 100%;
+    padding: 10px;
   }
 
-  .container {
-    flex-direction: column;
+  .card-grid {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* chhoti cards */
+    gap: 15px;
+  }
+
+  .card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* images distort na ho */
+  }
+
+  .header-inner {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+
+  .top-header h2 {
+    font-size: 20px; /* mobile ke liye chhota heading */
   }
 }
 
- </style>
+   
+    footer {
+  width: 100%;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+    .footer-section {
+      flex: 1 1 220px;
+      margin-bottom: 10px;
+    }
+
+    .footer-section h3,
+.footer-section h4 {
+  color: #ffcc00;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #ffcc00; /* yellow line */
+  display: inline-block; /* sirf text ke width tak line aayegi */
+}
+
+    .footer-links,
+    .footer-links li {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .social-icon {
+      color: white;
+      margin-right: 10px;
+      font-size: 20px;
+      text-decoration: none;
+      display: inline-block;
+      transition: color 0.3s ease;
+    }
+
+    .social-icon.fb:hover {
+      color: #3b5998; /* Facebook Blue */
+    }
+
+    .social-icon.tw:hover {
+      color: #1da1f2; /* Twitter Blue */
+    }
+
+    .social-icon.ln:hover {
+      color: #0a66c2; /* LinkedIn Blue */
+    }
+.social-icon.in:hover {
+      color: pink; /* Instagram Pink */
+    }
+    .footer-bottom {
+      text-align: center;
+      margin-top: 30px;
+      border-top: 1px solid #333;
+      padding-top: 10px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .footer-section {
+        flex: 1 1 100%;
+      }
+    }
+   
+  </style>
 </head>
 <body>
-   <header class="header">
+  <!-- Header -->
+  <header class="header">
     <div class="header-inner">
-      <!-- Left Logo & Title -->
       <div class="logo-section">
         <img src="Dev_Sanskriti_Vishwavidyalaya-removebg-preview.png" alt="Logo">
-        <h1>DSVV Alumni Engage</h1>
+        <h1>DSVV Alumni Engagement</h1>
       </div>
-
-      <!-- Desktop Navigation -->
+      <!-- Desktop Menu -->
       <nav class="navbar desktop-nav">
         <ul class="nav-menu">
           <li class="nav-item dropdown">
-            <a href="#" class="nav-link">COMMUNITY ▾</a>
+            <a class="nav-link">COMMUNITY ▾</a>
             <ul class="dropdown-menu">
               <li><a href="directory.html">Alumni Directory</a></li>
               <li><a href="birthday.html">Alumni Birthdays</a></li>
@@ -235,194 +378,261 @@
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a href="#" class="nav-link">EVENTS ▾</a>
+            <a class="nav-link">EVENTS ▾</a>
             <ul class="dropdown-menu">
               <li><a href="Event.html">Events</a></li>
               <li><a href="gallery.html">Galleries</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a href="#" class="nav-link">GET INVOLVED ▾</a>
+            <a class="nav-link">GET INVOLVED ▾</a>
             <ul class="dropdown-menu">
               <li><a href="mentornship.html">Mentorship Program</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a href="#" class="nav-link">ABOUT ▾</a>
+            <a class="nav-link">ABOUT ▾</a>
             <ul class="dropdown-menu">
               <li><a href="About.html">About Us</a></li>
             </ul>
           </li>
         </ul>
-        <a href="Login.html" class="login-button desktop-only">LOGIN</a>
+        <a href="Login.html" class="login-button">LOGIN</a>
       </nav>
-
       <!-- Mobile Toggle -->
       <div class="mobile-toggle">
         <button onclick="toggleMenu()">MENU</button>
-       <a href="Login.html" class="login-button">LOGIN</a>
+        <a href="Login.html" class="login-button">LOGIN</a>
       </div>
     </div>
   </header>
 
-  <!-- Mobile Slide Menu -->
+  <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
     <div class="menu-header">
-      Menu
-      <button onclick="toggleMenu()">✕</button>
+      Menu <button onclick="toggleMenu()">✕</button>
     </div>
-    <div class="nav-section">
-      <details>
-        <summary>Community</summary>
-        <ul>
-          <li><a href="directory.html">Alumni Directory</a></li>
-          <li><a href="birthday.html">Alumni Birthday</a></li>
-          <li><a href="speaks.html">Alumni Speaks</a></li>
-          <li><a href="news.html">Alumni News</a></li>
-        </ul>
-      </details>
-      <details>
-        <summary>Events</summary>
-        <ul>
-          <li><a href="Event.html">Events</a></li>
-          <li><a href="gallery.html">Galleries</a></li>
-        </ul>
-      </details>
-      <details>
-        <summary>Get Involved</summary>
-        <ul>
-          <li><a href="mentornship.html">Mentorship Program</a></li>
-        </ul>
-      </details>
-      <details>
-        <summary>About</summary>
-        <ul>
-          <li><a href="About.html">About Us</a></li>
-          
-        </ul>
-      </details>
-    </div>
+    <details>
+      <summary>Community</summary>
+      <ul>
+        <li><a href="directory.html">Alumni Directory</a></li>
+        <li><a href="birthday.html">Alumni Birthdays</a></li>
+        <li><a href="speaks.html">Alumni Speaks</a></li>
+        <li><a href="news.html">Alumni News</a></li>
+      </ul>
+    </details>
+    <details>
+      <summary>Events</summary>
+      <ul>
+        <li><a href="Event.html">Events</a></li>
+        <li><a href="gallery.html">Galleries</a></li>
+      </ul>
+    </details>
+    <details>
+      <summary>Get Involved</summary>
+      <ul><li><a href="mentornship.html">Mentorship Program</a></li></ul>
+    </details>
+    <details>
+      <summary>About</summary>
+      <ul><li><a href="About.html">About Us</a></li></ul>
+    </details>
   </div>
-</header>
+
+
+  <!-- Container -->
   <div class="container">
-    
     <!-- Sidebar / Filters -->
     <aside class="sidebar">
-        <h4>Filters</h4>
+      <h1>Filters</h1><br>
       <div class="search-section">
-      <input type="text" class="search-box" placeholder="Enter Keyword.." />
-          <button class="search-btn"><i class="fas fa-search"></i></button>
+        <input type="text" class="search-box" placeholder="Enter Keyword.." />
+        <button class="search-btn"><i class="fas fa-search"></i></button>
       </div>
- 
-    <!-- Role Filter -->
-    <button class="filter-toggle" onclick="toggleFilter('roleFilter')">Search by Role</button>
-    <div class="filter-content" id="roleFilter">
-      <select>
-        <option value="">Select Role</option>
-        <option value="Alumni">Alumni</option>
-        <option value="Faculty">Faculty</option>
-        <option value="Student">Student</option>
-      </select>
-    </div>
-    <!-- Year of Graduation -->
-    <button class="filter-toggle" onclick="toggleFilter('gradFilter')">Year of Graduation</button>
-    <div class="filter-content" id="gradFilter">
-      <label><input type="checkbox" /> 2015</label>
-      <label><input type="checkbox" /> 2016</label>
-      <label><input type="checkbox" /> 2017</label>
-    </div>
 
-    <!-- Course / Degree -->
-    <button class="filter-toggle" onclick="toggleFilter('courseFilter')">Course/Degree</button>
-    <div class="filter-content" id="courseFilter">
-      <select>
-        <option value="">All</option>
-        <option value="BCA">BCA</option>
-        <option value="B.Sc">B.Sc(IT)</option>
-        <option value="MCA">MCA</option>
-      </select>
-    </div>
+      <!-- Role Filter -->
+      <button class="filter-toggle" onclick="toggleFilter('roleFilter')">Search by Role</button>
+      <div class="filter-content" id="roleFilter">
+        <select>
+          <option value="">Select Role</option>
+          <option value="Alumni">Alumni</option>
+          <option value="Faculty">Faculty</option>
+          <option value="Student">Student</option>
+        </select>
+      </div>
 
-    <!-- Current City -->
-    <button class="filter-toggle" onclick="toggleFilter('cityFilter')">Current City</button>
-    <div class="filter-content" id="cityFilter">
-      <input type="text" placeholder="Delhi" />
-      <input type="text" placeholder="Bangalore" />
-    </div>
-  </div>
+      <!-- Year of Graduation -->
+      <button class="filter-toggle" onclick="toggleFilter('gradFilter')">Year of Graduation</button>
+      <div class="filter-content" id="gradFilter">
+        <label><input type="checkbox" /> 2015</label>
+        <label><input type="checkbox" /> 2016</label>
+        <label><input type="checkbox" /> 2017</label>
+      </div>
 
+      <!-- Course / Degree -->
+      <button class="filter-toggle" onclick="toggleFilter('courseFilter')">Course/Degree</button>
+      <div class="filter-content" id="courseFilter">
+        <select>
+          <option value="">All</option>
+          <option value="BCA">BCA</option>
+          <option value="B.Sc">B.Sc(IT)</option>
+          <option value="MCA">MCA</option>
+        </select>
+      </div>
+
+      <!-- Current City -->
+      <button class="filter-toggle" onclick="toggleFilter('cityFilter')">Current City</button>
+      <div class="filter-content" id="cityFilter">
+        <input type="text" placeholder="Delhi" />
+        <input type="text" placeholder="Bangalore" />
+      </div>
     </aside>
 
-    <!-- Main Content -->
-  <main class="main-content">
-      <div class="member-count">150 Members in community</div>
-      <h2>All Profiles</h2>
-      <div class="card-grid">
+    <!-- Right Section -->
+    <div class="right-section">
+      <!-- Top header row -->
+      <div class="top-header">
+        <div class="member-count">150 Members in community</div>
+        <h2>All Profiles</h2>
+      </div>
 
-
-       <div class="card-grid" id="cardGrid">
-      <!-- Profiles will be loaded here -->
+      <!-- Main Content -->
+      <main class="main-content">
+        <div class="card-grid" id="cardGrid">
+          <!-- Profiles will be loaded here -->
+        </div>
+      </main>
     </div>
-    </main>
   </div>
-  <script>
-    //Menu Option
-    function toggleMenu() {
-      document.getElementById('mobileMenu').classList.toggle('active');
-    }
-    function filterBy(type) {
-  const value = prompt(`Enter ${type.replace('_', ' ')} to filter:`).toLowerCase();
-  const cards = document.querySelectorAll('.card');
+ <!--Footer-->
+   <footer style="background-color: #003366; color: white; padding: 40px 30px 30px; font-family: Arial, sans-serif;">
+ <div class="footer-container">
+    <!-- About -->
+    <div class="footer-section">
+      <h3>Alumni Engagement</h3>
+      <p style="line-height: 1.6;">Connecting our alumni community with updates, events, and opportunities. Stay involved and support the legacy.</p>
+    </div>
 
-  cards.forEach(card => {
-    const cardValue = (card.dataset[type] || '').toLowerCase();
-    if (cardValue.includes(value)) {
-      card.style.display = 'block';
-    } else {
-      card.style.display = 'none';
-    }
-  });
-}
-//Search Filter
- function toggleFilter(id) {
-      const el = document.getElementById(id);
-      el.style.display = el.style.display === "none" ? "block" : "none";
-    }
-// Google Sheets
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Event.html">Events</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="About.html">Contact</a></li>
+      </ul>
+    </div>
+
+
+    <!-- Contact Info -->
+    <div class="footer-section">
+      <h4>Contact Us</h4>
+      <p>Email: alumni@dsvv.ac.in</p>
+      <p>Phone: +91-12345-67890</p>
+      <p>Address: DSVV Campus, Haridwar, India</p>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+      <a href="#" class="social-icon fb"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="social-icon tw"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="social-icon ln"><i class="fab fa-linkedin-in"></i></a>
+    <a href="#" class="social-icon in"><i class="bi bi-instagram"></i></a> 
+    </div>
+  </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 Alumni Engagement | Developed by Software Development Cell, DSVV
+  </div>
+</footer>
+<!-- FOOTER END -->
+<script>
+  // Menu Option
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('active');
+  }
+
+  // Search Filter Toggle
+  function toggleFilter(id) {
+    const el = document.getElementById(id);
+    el.style.display = el.style.display === "none" ? "block" : "none";
+  }
+
+  let allProfiles = []; // Global array to store all profiles
+
+  // Google Sheets
   async function loadProfiles() {
-      const sheetID = '1-vjf8wPgn0zeY9LYezba2971jvJgXOyAlaydin_6UH4'; // Just the Sheet ID
-      const sheetName = 'Alumni'; // Make sure this matches your tab name
-      const url = `https://opensheet.elk.sh/${sheetID}/${sheetName}`;
+    const sheetID = '1-vjf8wPgn0zeY9LYezba2971jvJgXOyAlaydin_6UH4'; 
+    const sheetName = 'Alumni'; 
+    const url = `https://opensheet.elk.sh/${sheetID}/${sheetName}`;
 
-      try {
-        const res = await fetch(url);
-        const data = await res.json();
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      allProfiles = data; // store all profiles
+      displayProfiles(allProfiles);
+    } catch (error) {
+      console.error("Error fetching data from Google Sheets:", error);
+    }
+  }
 
-        const cardGrid = document.getElementById("cardGrid");
-        cardGrid.innerHTML = "";
+  // Function to display profiles
+  function displayProfiles(profiles) {
+    const cardGrid = document.getElementById("cardGrid");
+    cardGrid.innerHTML = "";
 
-        data.forEach(user => {
-          const card = document.createElement("div");
-          card.className = "card";
-
-          card.innerHTML = `
-            <img src="${user.Image || 'https://via.placeholder.com/200'}" alt="Profile Image" />
-            <div class="card-body">
-              <p><strong></strong> ${user.Name|| 'N/A'}</p>
-               <p><strong></strong> ${user.Year || 'N/A'}</p>
-              <p><strong></strong> ${user.Class || 'N/A'}</p>
-             <p><strong></strong> ${user.Address || 'N/A'}</p>
-            </div>
-          `;
-          cardGrid.appendChild(card);
-        });
-      } catch (error) {
-        console.error("Error fetching data from Google Sheets:", error);
-      }
+    if (profiles.length === 0) {
+      cardGrid.innerHTML = "<p>No profiles found.</p>";
+      return;
     }
 
-    document.addEventListener("DOMContentLoaded", loadProfiles);
+    profiles.forEach(user => {
+      const card = document.createElement("div");
+      card.className = "card";
 
-    </script>
+      card.innerHTML = `
+        <img src="${user.Image || 'https://via.placeholder.com/200'}" alt="Profile Image" />
+        <div class="card-body">
+          <p> ${user.Name || 'N/A'}</p>
+          <p> ${user.Year || 'N/A'}</p>
+          <p> ${user.Class || 'N/A'}</p>
+          <p> ${user.Address || 'N/A'}</p>
+        </div>
+      `;
+      cardGrid.appendChild(card);
+    });
+  }
+
+  // Function to handle search
+  function searchProfiles() {
+    const keyword = document.querySelector(".search-box").value.toLowerCase();
+
+    const filtered = allProfiles.filter(user => {
+      return (
+        (user.Name && user.Name.toLowerCase().includes(keyword)) ||
+        (user.Class && user.Class.toLowerCase().includes(keyword)) ||
+        (user.Year && user.Year.toLowerCase().includes(keyword)) ||
+        (user.Address && user.Address.toLowerCase().includes(keyword))
+      );
+    });
+
+    displayProfiles(filtered);
+  }
+
+  // Event listener for search button
+  document.addEventListener("DOMContentLoaded", () => {
+    loadProfiles();
+    document.querySelector(".search-btn").addEventListener("click", searchProfiles);
+
+    // Enter key search support
+    document.querySelector(".search-box").addEventListener("keyup", (e) => {
+      if (e.key === "Enter") searchProfiles();
+    });
+  });
+</script>
+
 </body>
 </html>

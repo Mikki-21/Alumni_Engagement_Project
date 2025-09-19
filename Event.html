@@ -3,203 +3,157 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="icon" href="Dev_Sanskriti_Vishwavidyalaya-removebg-preview.png">
+  <link rel="icon" href="Dev_Sanskriti_Vishwavidyalaya-removebg-preview.png">
   <title>Alumni Events</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
   <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding-top: 70px;
     }
 
-    .main-content {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
+    /* Header */
+    .header {
+      background-color: #003366;
+      padding: 10px 20px;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      z-index: 10000;
     }
-
-    .header { background-color: #003366; padding: 10px 20px; }
-    .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; }
     .logo-section { display: flex; align-items: center; }
     .logo-section img { height: 50px; margin-right: 10px; }
-    .logo-section h1 { font-size: 18px; color: gold; margin: 0; }
+    .logo-section h1 { font-size: 18px; color: gold; }
 
     .navbar { display: flex; align-items: center; }
-    .nav-menu { list-style: none; display: flex; padding: 0; margin: 0; }
+    .nav-menu { list-style: none; display: flex; margin: 0; padding: 0; }
     .nav-item { position: relative; }
-    .nav-link { display: block; padding: 15px 15px; color: white; text-decoration: none; font-weight: 500; cursor: pointer; }
-
-    .dropdown-menu { position: absolute; top: 100%; left: 0; background: white; box-shadow: 0 8px 16px rgba(0,0,0,0.15); list-style: none; padding: 10px 0; margin: 0; display: none; min-width: 200px; z-index: 1000; }
-    .dropdown-menu li a { display: block; padding: 10px 20px; color: #555; text-decoration: none; }
-    .dropdown-menu li a:hover { background: #eee; }
+    .nav-link {
+      padding: 15px; color: white; text-decoration: none;
+      font-weight: 500; cursor: pointer;
+    }
+    .dropdown-menu {
+      position: absolute; top: 100%; left: 0;
+      background: white; list-style: none;
+      padding: 10px 0; display: none;
+      min-width: 200px; box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+    .dropdown-menu li a {
+      display: block; padding: 10px 20px; color: #333; text-decoration: none;
+    }
     .dropdown:hover .dropdown-menu { display: block; }
+    .login-button {
+      padding: 8px 16px; background: #2e7d32;
+      color: white; border-radius: 4px;
+      margin-left: 15px; text-decoration: none;
+    }
 
-    .login-button { padding: 8px 16px; background: #2e7d32; color: white; border: none; border-radius: 4px; cursor: pointer; margin-left: 15px; text-decoration: none; }
-
+    /* Mobile */
     .mobile-toggle { display: none; align-items: center; gap: 10px; }
-    .mobile-toggle button { background: none; border: none; font-size: 16px; color: white; cursor: pointer; font-weight: bold; }
-    .mobile-toggle .login-button { background: #2e7d32; color: white; padding: 8px 16px; border: none; border-radius: 4px; }
-
-    .mobile-menu { position: fixed; top: 0; left: -100%; width: 80%; height: 100vh; background: #fff; box-shadow: 2px 0 10px rgba(0,0,0,0.2); padding: 20px; display: flex; flex-direction: column; gap: 20px; transition: left 0.3s ease; z-index: 1000; }
+    .mobile-toggle button { background: none; border: none; color: white; font-size: 16px; cursor: pointer; }
+    .mobile-menu {
+      position: fixed; top: 0; left: -100%; height: 100vh; width: 80%;
+      background: #fff; padding: 20px; transition: left 0.3s ease;
+      z-index: 20000; overflow-y: auto;
+    }
     .mobile-menu.active { left: 0; }
-    .mobile-menu .menu-header { display: flex; justify-content: space-between; align-items: center; font-size: 20px; font-weight: bold; color: green; }
-    .mobile-menu .nav-section { display: flex; flex-direction: column; gap: 10px; }
-    .mobile-menu .nav-section details summary { font-size: 18px; cursor: pointer; font-weight: bold; }
-    .mobile-menu li { list-style: none; padding-left: 20px; }
-    .mobile-menu a { text-decoration: none; color: #333; }
+    .mobile-menu .menu-header {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 20px; font-weight: bold; margin-bottom: 20px; color: #003366;
+    }
+    .mobile-menu details summary {
+      font-size: 18px; font-weight: bold; cursor: pointer;
+      margin: 10px 0; color: #333;
+    }
+    .mobile-menu ul { margin: 0 0 10px 15px; padding: 0; list-style: none; }
+    .mobile-menu li a { text-decoration: none; color: #003366; font-size: 16px; }
 
     @media (max-width: 768px) {
       .desktop-nav { display: none; }
       .mobile-toggle { display: flex; }
-      .header-inner { flex-wrap: nowrap; justify-content: space-between; }
     }
-    
 
+    /* CONTENT */
     .container {
       display: flex;
-      margin-top: 30px;
+      margin: 30px;
       gap: 20px;
     }
 
-    .sidebar {
-      width: 350px;
-    }
+    .sidebar { width: 300px; }
 
-    .search-box {
-      display: flex;
-      margin-bottom: 20px;
-    }
+    .search-box { display: flex; margin-bottom: 20px; }
+    .search-box input { width: 100%; padding: 10px; border: 1px solid #ccc; }
+    .search-box button { padding: 10px; background-color:#388e3c; color: white; border: none; cursor: pointer; }
 
-    .search-box input {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-    }
+    .categories { background: #fff; border: 1px solid #ddd; }
+    .categories div { padding: 15px; border-bottom: 1px solid #eee; cursor: pointer; }
+    .categories div.active { border-left: 3px solid #388e3c; font-weight: bold; }
 
-    .search-box button {
-      padding: 10px;
-      background-color:#388e3c;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
+    .events { flex: 1; }
 
-    .categories {
-      background: #fff;
-      border: 1px solid #ddd;
-    }
-
-    .categories div {
-      padding: 15px;
-      border-bottom: 1px solid #eee;
-      cursor: pointer;
-    }
-
-    .categories div.active {
-      border-left: 3px solid #388e3c;
-      font-weight: bold;
-    }
-
-    .events {
-      flex: 1;
-    }
-
-    .event-card {
-      background: #fff;
-      display: flex;
-      border: 1px solid #ddd;
-      margin-bottom: 20px;
-      padding: 15px;
-      gap: 20px;
-    }
-
+    .event-card { background: #fff; display: flex; border: 1px solid #ddd; margin-bottom: 20px; padding: 15px; gap: 20px; }
     .event-card img {
       width: 150px;
       height: 200px;
       object-fit: cover;
+      border-radius: 6px;
     }
-
-    .event-details {
-      flex: 1;
-    }
-
-    .event-title {
-      font-size: 18px;
-      font-weight: 600;
-    }
-
-    .event-meta {
-      margin: 10px 0;
-      font-size: 14px;
-      color: #555;
-    }
-
-    .past-event {
-      background-color: #ddd;
-      color: #555;
-      border-radius: 20px;
-      padding: 4px 10px;
-      display: inline-block;
-      font-size: 12px;
-    }
-
-    .view-btn {
-      align-self: center;
-      background-color: #388e3c;
-      color: white;
-      padding: 8px 20px;
-      border: none;
-      cursor: pointer;
-      font-size: 14px;
-    }
+    .event-details { flex: 1; }
+    .event-title { font-size: 18px; font-weight: 600; }
+    .event-meta { margin: 10px 0; font-size: 14px; color: #555; }
+    .past-event { background-color: #ddd; color: #555; border-radius: 20px; padding: 4px 10px; font-size: 12px; }
+    .view-btn { align-self: center; background-color: #388e3c; color: white; padding: 8px 20px; border: none; cursor: pointer; font-size: 14px; }
 
     @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-      }
-
-      .sidebar {
+      .container { flex-direction: column; }
+      .sidebar { width: 100%; }
+      .event-card { flex-direction: column; align-items: center; text-align: center; }
+      .event-card img {
         width: 100%;
+        height: auto;
       }
-
-      .event-card {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .event-details {
-        text-align: left;
-        width: 100%;
-      }
+      .event-details { text-align: left; width: 100%; }
     }
 
-    .no-events {
-      text-align: center;
-      color: #888;
-      font-size: 16px;
-      margin-top: 40px;
+    .no-events { text-align: center; color: #888; font-size: 16px; margin-top: 40px; }
+
+    footer { width: 100%; }
+    .footer-container { display: flex; flex-wrap: wrap; justify-content: space-between; width: 100%; }
+    .footer-section { flex: 1 1 220px; margin-bottom: 10px; }
+    .footer-section h3, .footer-section h4 {
+      color: #ffcc00; margin-bottom: 10px; padding-bottom: 5px;
+      border-bottom: 2px solid #ffcc00; display: inline-block;
     }
+    .footer-links, .footer-links li { list-style: none; padding: 0; margin: 0; }
+    .footer-links a { color: white; text-decoration: none; display: block; margin-bottom: 8px; }
+    .footer-links a:hover { text-decoration: underline; }
+    .social-icon { color: white; margin-right: 10px; font-size: 20px; text-decoration: none; display: inline-block; transition: color 0.3s ease; }
+    .social-icon.fb:hover { color: #3b5998; }
+    .social-icon.tw:hover { color: #1da1f2; }
+    .social-icon.ln:hover { color: #0a66c2; }
+    .social-icon.in:hover { color: pink; }
+    .footer-bottom { text-align: center; margin-top: 30px; border-top: 1px solid #333; padding-top: 10px; font-size: 14px; }
+    @media (max-width: 768px) { .footer-section { flex: 1 1 100%; } }
   </style>
 </head>
 <body>
-   <header class="header">
+<!-- Header -->
+  <header class="header">
     <div class="header-inner">
-      <!-- Left Logo & Title -->
       <div class="logo-section">
         <img src="Dev_Sanskriti_Vishwavidyalaya-removebg-preview.png" alt="Logo">
-        <h1>DSVV Alumni Engage</h1>
+        <h1>DSVV Alumni Engagement</h1>
       </div>
-
-      <!-- Desktop Navigation -->
+      <!-- Desktop Menu -->
       <nav class="navbar desktop-nav">
         <ul class="nav-menu">
           <li class="nav-item dropdown">
-            <a href="#" class="nav-link">COMMUNITY ▾</a>
+            <a class="nav-link">COMMUNITY ▾</a>
             <ul class="dropdown-menu">
               <li><a href="directory.html">Alumni Directory</a></li>
               <li><a href="birthday.html">Alumni Birthdays</a></li>
@@ -208,144 +162,182 @@
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a href="#" class="nav-link">EVENTS ▾</a>
+            <a class="nav-link">EVENTS ▾</a>
             <ul class="dropdown-menu">
               <li><a href="Event.html">Events</a></li>
               <li><a href="gallery.html">Galleries</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a href="#" class="nav-link">GET INVOLVED ▾</a>
+            <a class="nav-link">GET INVOLVED ▾</a>
             <ul class="dropdown-menu">
               <li><a href="mentornship.html">Mentorship Program</a></li>
-              
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a href="#" class="nav-link">ABOUT ▾</a>
+            <a class="nav-link">ABOUT ▾</a>
             <ul class="dropdown-menu">
               <li><a href="About.html">About Us</a></li>
-
             </ul>
           </li>
         </ul>
-        <a href="Login.html" class="login-button desktop-only">LOGIN</a>
+        <a href="Login.html" class="login-button">LOGIN</a>
       </nav>
-
       <!-- Mobile Toggle -->
       <div class="mobile-toggle">
         <button onclick="toggleMenu()">MENU</button>
-       <a href="Login.html" class="login-button">LOGIN</a>
+        <a href="Login.html" class="login-button">LOGIN</a>
       </div>
     </div>
   </header>
 
-  <!-- Mobile Slide Menu -->
+  <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
     <div class="menu-header">
-      Menu
-      <button onclick="toggleMenu()">✕</button>
+      Menu <button onclick="toggleMenu()">✕</button>
     </div>
-    <div class="nav-section">
-      <details>
-        <summary>Community</summary>
-        <ul>
-          <li><a href="directory.html">Alumni Directory</a></li>
-          <li><a href="birthday.html">Alumni Birthday</a></li>
-          <li><a href="speaks.html">Alumni Speaks</a></li>
-          <li><a href="news.html">Alumni News</a></li>
-        </ul>
-      </details>
-      <details>
-        <summary>Events</summary>
-        <ul>
-          <li><a href="Event.html">Events</a></li>
-          <li><a href="gallery.html">Galleries</a></li>
-        </ul>
-      </details>
-      <details>
-        <summary>Get Involved</summary>
-        <ul>
-          <li><a href="mentornship.html">Mentorship Program</a></li>
-        </ul>
-      </details>
-      <details>
-        <summary>About</summary>
-        <ul>
-          <li><a href="About.html">About Us</a></li>
-        </ul>
-      </details>
-    </div>
-  </div>  
-</header>
-<div class="container">
-  <div class="sidebar">
-    <div class="search-box">
-      <input type="text" id="searchInput" placeholder="Search by title..." oninput="filterEvents()" />
-     <button class="search-btn"><i class="fas fa-search"></i></button>
+    <details>
+      <summary>Community</summary>
+      <ul>
+        <li><a href="directory.html">Alumni Directory</a></li>
+        <li><a href="birthday.html">Alumni Birthdays</a></li>
+        <li><a href="speaks.html">Alumni Speaks</a></li>
+        <li><a href="news.html">Alumni News</a></li>
+      </ul>
+    </details>
+    <details>
+      <summary>Events</summary>
+      <ul>
+        <li><a href="Event.html">Events</a></li>
+        <li><a href="gallery.html">Galleries</a></li>
+      </ul>
+    </details>
+    <details>
+      <summary>Get Involved</summary>
+      <ul><li><a href="mentornship.html">Mentorship Program</a></li></ul>
+    </details>
+    <details>
+      <summary>About</summary>
+      <ul><li><a href="About.html">About Us</a></li></ul>
+    </details>
+  </div>
 
+
+  <div class="main-content">
+    <div class="container">
+      <div class="sidebar">
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Search by title, e.g. 'past events'..." oninput="filterEvents()" />
+          <button class="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="categories">
+          <div class="active" onclick="filterCategory(event,'all')">All Events (3)</div>
+          <div onclick="filterCategory(event,'past')">Past Events (2)</div>
+          <div onclick="filterCategory(event,'upcoming')">Upcoming Events (1)</div>
+        </div>
+      </div>
+
+      <div class="events" id="eventList">
+        <!-- Event 1 -->
+        <div class="event-card" data-category="past" data-title="Internship Meeting">
+          <img src="ima4.jpg" alt="event-img" />
+          <div class="event-details">
+            <div class="event-title">Internship Meeting</div>
+            <div class="event-meta"> <i class="fa-regular fa-calendar"></i> Dec 03, 2024<br><i class="fa-solid fa-location-dot"></i> DSVV Haridwar</div>
+            <span class="past-event">Past Event</span>
+          </div>
+          <button class="view-btn">VIEW</button>
+        </div>
+
+        <!-- Event 2 -->
+        <div class="event-card" data-category="past" data-title="UI & UX Design Workshop">
+          <img src="ima3.jpg" alt="event-img" />
+          <div class="event-details">
+            <div class="event-title">UI & UX Design Workshop</div>
+            <div class="event-meta"> <i class="fa-regular fa-calendar"></i> Dec 03, 2024 - 4:00 PM<br><i class="fa-solid fa-location-dot"></i> Ramanujan Coding Club, DSVV Haridwar</div>
+            <span class="past-event">Past Event</span>
+          </div>
+          <button class="view-btn">VIEW</button>
+        </div>
+
+        <!-- Event 3 -->
+        <div class="event-card" data-category="upcoming" data-title="Alumni Felicitation">
+          <img src="ima3.jpg" alt="event-img" />
+          <div class="event-details">
+            <div class="event-title">Alumni Felicitation</div>
+            <div class="event-meta"> <i class="fa-regular fa-calendar"></i>  Dec 05, 2024 - 10:00 AM<br><i class="fa-solid fa-location-dot"></i>  DSVV Auditorium</div>
+            <span class="past-event">Upcoming Event</span>
+          </div>
+          <button class="view-btn">VIEW</button>
+        </div>
+      </div>
     </div>
-    <div class="categories">
-      <div class="active" onclick="filterCategory('all')">All Events (2)</div>
-      <div onclick="filterCategory('past')">Past Events (2)</div>
-      <div onclick="filterCategory('upcoming')">Upcoming Events (0)</div>
+
+      
+   <div class="no-events" id="noEventsMsg" style="display:none;">
+      No more events to display!
     </div>
   </div>
 
-  <div class="events" id="eventList">
-    <!-- Event 1 -->
-    <div class="event-card" data-category="past" data-title="74th Annual General Body Meeting">
-      <img src="ima4.jpg" alt="event-img" />
-      <div class="event-details">
-        <div class="event-title">Internship Meeting</div>
-        <div class="event-meta">📅 Dec 03, 2024<br>📍 DSVV Haridwar</div>
-        <span class="past-event">Past Event</span>
-      </div>
-      <button class="view-btn">VIEW</button>
+  <!--Footer-->
+   <footer style="background-color: #003366; color: white; padding: 40px 30px 30px; font-family: Arial, sans-serif;">
+ <div class="footer-container">
+    <!-- About -->
+    <div class="footer-section">
+      <h3>Alumni Engagement</h3>
+      <p style="line-height: 1.6;">Connecting our alumni community with updates, events, and opportunities. Stay involved and support the legacy.</p>
     </div>
 
-    <!-- Event 2 -->
-    <div class="event-card" data-category="past" data-title="Felicitation of 1974 Batch & 1975 B.Arch Batch Alumni">
-      <img src="ima3.jpg" alt="event-img" />
-      <div class="event-details">
-        <div class="event-title">UI & UX Design Workshop</div>
-        <div class="event-meta">📅 Dec 03, 2024 - 4:00 PM<br>📍Ramanujan Coding Club, DSVV haridwar</div>
-        <span class="past-event">Past Event</span>
-      </div>
-      <button class="view-btn">VIEW</button>
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Event.html">Events</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="About.html">Contact</a></li>
+      </ul>
     </div>
-  </div>
-</div>
-<!-- Event 3-->
-    <div class="event-card" data-category="past" data-title="Felicitation of 1974 Batch & 1975 B.Arch Batch Alumni">
-      <img src="ima3.jpg" alt="event-img" />
-      <div class="event-details">
-        <div class="event-title">UI & UX Design Workshop</div>
-        <div class="event-meta">📅 Dec 03, 2024 - 4:00 PM<br>📍Ramanujan Coding Club, DSVV haridwar</div>
-        <span class="past-event">Past Event</span>
-      </div>
-      <button class="view-btn">VIEW</button>
-    </div>
-  </div>
-</div>
 
-<div class="no-events" id="noEventsMsg" style="display:none;">
-  No more events to display!
-</div>
+
+    <!-- Contact Info -->
+    <div class="footer-section">
+      <h4>Contact Us</h4>
+      <p>Email: alumni@dsvv.ac.in</p>
+      <p>Phone: +91-12345-67890</p>
+      <p>Address: DSVV Campus, Haridwar, India</p>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+      <a href="#" class="social-icon fb"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="social-icon tw"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="social-icon ln"><i class="fab fa-linkedin-in"></i></a>
+     <a href="#" class="social-icon in"><i class="bi bi-instagram"></i></a> 
+    </div>
+  </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 Alumni Engagement | Developed by Software Development Cell, DSVV
+  </div>
+</footer>
+<!-- FOOTER END -->
 
 <script>
-  
-    function toggleMenu() {
-      document.getElementById('mobileMenu').classList.toggle('active');
-    }
-  
-  function filterCategory(category) {
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('active');
+  }
+
+  function filterCategory(e, category) {
     const cards = document.querySelectorAll('.event-card');
     const noEvents = document.getElementById('noEventsMsg');
     let count = 0;
 
     document.querySelectorAll('.categories div').forEach(div => div.classList.remove('active'));
-    event.target.classList.add('active');
+    e.target.classList.add('active');
 
     cards.forEach(card => {
       const cardCategory = card.getAttribute('data-category');
@@ -361,14 +353,25 @@
   }
 
   function filterEvents() {
-    const input = document.getElementById('searchInput').value.toLowerCase();
+    const input = document.getElementById('searchInput').value.toLowerCase().trim();
     const cards = document.querySelectorAll('.event-card');
     const noEvents = document.getElementById('noEventsMsg');
     let count = 0;
 
+    // synonyms for categories
+    const pastKeywords = ["past", "old", "previous", "past events"];
+    const upcomingKeywords = ["upcoming", "future", "next", "upcoming events"];
+
     cards.forEach(card => {
       const title = card.getAttribute('data-title').toLowerCase();
-      if (title.includes(input)) {
+      const category = card.getAttribute('data-category');
+
+      if (
+        input === "" ||
+        title.includes(input) ||
+        (pastKeywords.includes(input) && category === "past") ||
+        (upcomingKeywords.includes(input) && category === "upcoming")
+      ) {
         card.style.display = 'flex';
         count++;
       } else {
@@ -379,6 +382,5 @@
     noEvents.style.display = count === 0 ? 'block' : 'none';
   }
 </script>
-
 </body>
 </html>

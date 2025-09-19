@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Navbar</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding-top: 70px; /* navbar ke liye jagah */
+    }
+
+    /* Header/Navbar */
+    .header {
+      background-color: #003366;
+      padding: 10px 20px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #fff;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    /* Desktop Menu */
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link {
+      color: #fff;
+      text-decoration: none;
+      padding: 8px;
+      display: block;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 35px;
+      left: 0;
+      background: #fff;
+      list-style: none;
+      min-width: 180px;
+      border: 1px solid #ccc;
+    }
+
+    .dropdown-menu li a {
+      color: #003366;
+      text-decoration: none;
+      padding: 10px;
+      display: block;
+    }
+
+    .nav-item:hover .dropdown-menu {
+      display: block;
+    }
+
+    .login-button {
+      background: #2e7d32;
+      color: #fff;
+      padding: 8px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-left: 20px;
+    }
+
+    /* Mobile */
+    .menu-toggle {
+      display: none;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 80%;
+      height: 100vh;
+      background: #fff;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: left 0.3s ease;
+      z-index: 2000;
+      overflow-y: auto;
+    }
+
+    .mobile-menu.active {
+      left: 0;
+    }
+
+    .menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 20px;
+      font-weight: bold;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 10px;
+    }
+
+    .mobile-menu summary {
+      font-size: 18px;
+      font-weight: bold;
+      padding: 10px 0;
+      color: #003366;
+      cursor: pointer;
+    }
+
+    .mobile-menu summary::marker {
+      display: none;
+    }
+
+    .mobile-menu ul {
+      list-style: none;
+      padding-left: 15px;
+    }
+
+    .mobile-menu ul li a {
+      text-decoration: none;
+      color: #333;
+      display: block;
+      padding: 6px 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .desktop-nav {
+        display: none;
+      }
+      .menu-toggle {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="logo">DSvv Alumni Engagement</div>
+
+    <!-- Desktop Menu -->
+    <nav class="navbar desktop-nav">
+      <ul class="nav-menu">
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link">COMMUNITY ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="directory.html">Alumni Directory</a></li>
+            <li><a href="birthday.html">Alumni Birthdays</a></li>
+            <li><a href="speaks.html">Alumni Speaks</a></li>
+            <li><a href="news.html">Alumni News</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link">EVENTS ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="Event.html">Events</a></li>
+            <li><a href="gallery.html">Galleries</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link">GET INVOLVED ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="mentornship.html">Mentorship Program</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link">ABOUT ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="About.html">About Us</a></li>
+          </ul>
+        </li>
+      </ul>
+      <a href="Login.html" class="login-button">LOGIN</a>
+    </nav>
+
+    <!-- Mobile Menu Toggle -->
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  </header>
+
+  <!-- Mobile Slide Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="menu-header">
+      Menu
+      <button onclick="toggleMenu()">✕</button>
+    </div>
+    <div class="nav-section">
+      <details open>
+        <summary>Community</summary>
+        <ul>
+          <li><a href="directory.html">Alumni Directory</a></li>
+          <li><a href="birthday.html">Alumni Birthdays</a></li>
+          <li><a href="speaks.html">Alumni Speaks</a></li>
+          <li><a href="news.html">Alumni News</a></li>
+        </ul>
+      </details>
+      <details>
+        <summary>Events</summary>
+        <ul>
+          <li><a href="Event.html">Events</a></li>
+          <li><a href="gallery.html">Galleries</a></li>
+        </ul>
+      </details>
+      <details>
+        <summary>Get Involved</summary>
+        <ul>
+          <li><a href="mentornship.html">Mentorship Program</a></li>
+        </ul>
+      </details>
+      <details>
+        <summary>About</summary>
+        <ul>
+          <li><a href="About.html">About Us</a></li>
+        </ul>
+      </details>
+      <a href="Login.html" class="login-button">LOGIN</a>
+    </div>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('active');
+    }
+  </script>
+
+  <main>
+    <h1 style="text-align:center; margin-top:50px;">Welcome to My Website</h1>
+    <p style="text-align:center;">Scroll down to test sticky navbar.</p>
+    <div style="height:2000px;"></div>
+  </main>
+</body>
+</html>

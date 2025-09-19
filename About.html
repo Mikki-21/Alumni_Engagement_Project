@@ -1,350 +1,315 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-   <link rel="icon" href="Dev_Sanskriti_Vishwavidyalaya-removebg-preview.png">
-  <title>Alumni Engagement</title>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="icon" href="Dev_Sanskriti_Vishwavidyalaya-removebg-preview.png">
+  <title>About DSVVAE</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding-top: 70px; /* navbar ke liye space */
     }
 
+    /* Header */
     .header {
       background-color: #003366;
       padding: 10px 20px;
-    }
-
-    .header-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .logo-section {
-      display: flex;
-      align-items: center;
-    }
-
-    .logo-section img {
-      height: 50px;
-      margin-right: 10px;
-    }
-
-    .logo-section h1 {
-      font-size: 18px;
-      color: gold;
-      margin: 0;
-    }
-
-    /* Desktop Navbar */
-    .navbar {
-      display: flex;
-      align-items: center;
-    }
-
-    .nav-menu {
-      list-style: none;
-      display: flex;
-      padding: 0;
-      margin: 0;
-    }
-
-    .nav-item {
-      position: relative;
-    }
-
-    .nav-link {
-      display: block;
-      padding: 15px 15px;
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      cursor: pointer;
-    }
-
-    .dropdown-menu {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background-color: white;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-      list-style: none;
-      padding: 10px 0;
-      margin: 0;
-      display: none;
-      min-width: 200px;
-      z-index: 1000;
-    }
-
-    .dropdown-menu li a {
-      display: block;
-      padding: 10px 20px;
-      color: #555;
-      text-decoration: none;
-    }
-
-    .dropdown-menu li a:hover {
-      background-color: #eee;
-    }
-
-    .dropdown:hover .dropdown-menu {
-      display: block;
-    }
-
-    .login-button {
-      padding: 8px 16px;
-      background-color: #2e7d32;
-      color: white;
-      border: none;
-      border-radius: 4px; 
-      cursor: pointer;
-      margin-left: 15px;
-       text-decoration: none;
-    }
-
-    /* Mobile Toggle */
-    .mobile-toggle {
-      display: none;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .mobile-toggle button {
-      background: none;
-      border: none;
-      font-size: 16px;
-      color: white;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .mobile-toggle .login-button {
-      background-color: #2e7d32;
-      color: white;
-      padding: 8px 16px;
-      border: none;
-      border-radius: 4px;
-    }
-
-    .mobile-menu {
       position: fixed;
-      top: 0;
-      left: -100%;
-      width: 80%;
-      height: 100vh;
-      background: #fff;
-      box-shadow: 2px 0 10px rgba(0,0,0,0.2);
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      transition: left 0.3s ease;
-      z-index: 1000;
+      top: 0; left: 0;
+      width: 100%;
+      z-index: 10000;
+    }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; }
+    .logo-section { display: flex; align-items: center; }
+    .logo-section img { height: 50px; margin-right: 10px; }
+    .logo-section h1 { font-size: 18px; color: gold; }
+
+    .navbar { display: flex; align-items: center; }
+    .nav-menu { list-style: none; display: flex; margin: 0; padding: 0; }
+    .nav-item { position: relative; }
+    .nav-link {
+      padding: 15px; color: white; text-decoration: none;
+      font-weight: 500; cursor: pointer;
+    }
+    .dropdown-menu {
+      position: absolute; top: 100%; left: 0;
+      background: white; list-style: none;
+      padding: 10px 0; display: none;
+      min-width: 200px; box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+    .dropdown-menu li a {
+      display: block; padding: 10px 20px; color: #333; text-decoration: none;
+    }
+    .dropdown:hover .dropdown-menu { display: block; }
+    .login-button {
+      padding: 8px 16px; background: #2e7d32;
+      color: white; border-radius: 4px;
+      margin-left: 15px; text-decoration: none;
     }
 
-    .mobile-menu.active {
-      left: 0;
+    /* Mobile */
+    .mobile-toggle { display: none; align-items: center; gap: 10px; }
+    .mobile-toggle button { background: none; border: none; color: white; font-size: 16px; cursor: pointer; }
+    .mobile-menu {
+      position: fixed; top: 0; left: -100%; height: 100vh; width: 80%;
+      background: #fff; padding: 20px; transition: left 0.3s ease;
+      z-index: 20000; overflow-y: auto;
     }
-
+    .mobile-menu.active { left: 0; }
     .mobile-menu .menu-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 20px;
-      font-weight: bold;
-      color: green;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 20px; font-weight: bold; margin-bottom: 20px; color: #003366;
     }
-
-    .mobile-menu .nav-section {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    .mobile-menu details summary {
+      font-size: 18px; font-weight: bold; cursor: pointer;
+      margin: 10px 0; color: #333;
     }
+    .mobile-menu ul { margin: 0 0 10px 15px; padding: 0; list-style: none; }
+    .mobile-menu li a { text-decoration: none; color: #003366; font-size: 16px; }
 
-    .mobile-menu .nav-section details summary {
-      font-size: 18px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .mobile-menu li {
-      list-style: none;
-      padding-left: 20px;
-    }
-
-    .mobile-menu a {
-      text-decoration: none;
-      color: #333;
-    }
-
-    /* Responsive */
     @media (max-width: 768px) {
-      .desktop-nav {
-        display: none;
-      }
-
-      .mobile-toggle {
-        display: flex;
-      }
-
-      .header-inner {
-        flex-wrap: nowrap;
-        justify-content: space-between;
-      }
+      .desktop-nav { display: none; }
+      .mobile-toggle { display: flex; }
     }
-     body {
+
+   /* body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color:#1e4a2f;
-      color: #fff;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+    }
+*/
+    .about-section {
+      background-color: #064e25; /* dark green */
+      color: white;
+      padding: 50px 80px;
+      line-height: 1.8;
+      font-size: 16px;
+      text-align: justify; /* ✅ justified alignment */
     }
 
-    /*.about-section {
-      padding: 80px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }*/
-
-    .about-section h1 {
-      font-size: 2em;
-      margin-bottom: 30px;
+    .about-section h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      font-weight: bold;
+      text-align: left;
     }
 
     .about-section p {
-      line-height: 1.8;
-      font-size:18px;
-      color: #ffffffd9;
       margin-bottom: 20px;
-      text-align: justify;   /* Justifies the paragraph text */
-       text-justify: inter-word;
-      direction: ltr;        /* Ensures left-to-right direction */
+      font-weight:normal;
+      font-size: 25px;
+        font-family: "Montserrat", sans-serif;
     }
 
     @media (max-width: 768px) {
       .about-section {
-        padding: 40px 15px;
+        padding: 30px 20px;
+        font-size: 12px;
       }
-      .about-section h1 {
-        font-size: 1.5em;
+      .about-section h2 {
+        font-size: 22px;
+      }
+      .about-section p{
+        font-size: 17px;
       }
     }
-    .contact-header {
-      background-color: #1e4a2f;
-      padding: 40px 20px;
-      color: white;
+     .container {
+  display: block; /* Stack vertically */
+  max-width: 500px; /* Fix width for left alignment */
+  margin: 20px 0 20px 40px; /* push from left side */
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  padding: 20px;
+}
+    .contact-info {
+      flex: 1;
+      padding: 20px;
+    }
+    .contact-info h2 {
+      margin-bottom: 15px;
+      color: #2c3e50;
+    }
+    .contact-info p {
+      margin: 8px 0;
+      color: #555;
+    }
+    .contact-info a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+    .form-container {
+  margin: 20px 0 40px 40px; /* push from left side */
+  background: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  width: 100%;
+  max-width: 500px; /* same width as contact */
+}
+    .form-container h2 {
+      margin-bottom: 20px;
+      color: #2c3e50;
       text-align: center;
     }
-
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      max-width: 1200px;
-      margin: auto;
-      padding: 40px 20px;
-      gap: 30px;
-    }
-
-    .info-box, .map-box {
-      background-color: white;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      padding: 20px;
-      flex: 1 1 400px;
-    }
-
-    .info-box h2, .form-box h2 {
-      margin-bottom: 20px;
-      font-size: 22px;
-      color: #333;
-    }
-
-    .info-box p, .info-box a {
-      color: #555;
-      font-size: 16px;
-      margin-bottom: 10px;
+    label {
       display: block;
-    }
-
-    .info-box a {
-      text-decoration: none;
-      color: #1e4a2f;
-    }
-
-    .map-box iframe {
-      width: 100%;
-      height: 300px;
-      border: none;
-      border-radius: 5px;
-    }
-
-    .form-box {
-      background-color: white;
-      margin: 20px auto;
-      padding: 20px;
-      border-radius: 5px;
-      max-width: 600px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    .form-box label {
-      display: block;
-      margin-top: 15px;
+      margin: 10px 0 5px;
       font-weight: bold;
+      color: #2c3e50;
     }
-
-    .form-box input,
-    .form-box textarea {
+    input, textarea, select {
       width: 100%;
       padding: 10px;
-      margin-top: 5px;
       border: 1px solid #ccc;
-      border-radius: 4px;
+      border-radius: 5px;
+      outline: none;
+      font-size: 14px;
     }
-
-    .form-box button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      background-color: #1e4a2f;
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    .phone-group {
+      display: flex;
+      gap: 10px;
+    }
+    .phone-group select {
+      width: 35%;
+    }
+    .phone-group input {
+      width: 65%;
+    }
+    button {
+      margin-top: 15px;
+      width: 100%;
+      background: #2e7d32;
       color: white;
       border: none;
-      border-radius: 4px;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 5px;
       cursor: pointer;
     }
+    button:hover {
+      background: #1b5e20;
+    }
+    .error {
+      color: red;
+      font-size: 13px;
+      margin-top: 3px;
+    }
+    /* Responsive left/full width */
+    @media (max-width: 768px) {
+      .container, .form-container {
+        margin: 15px auto;
+        width: 90%;
+        max-width: 100%;
+      }
+    }
+     footer {
+  width: 100%;
+}
 
-    .form-box button:hover {
-      background-color: #155c24;
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+    .footer-section {
+      flex: 1 1 220px;
+      margin-bottom: 10px;
+    }
+
+    .footer-section h3,
+.footer-section h4 {
+  color: #ffcc00;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #ffcc00; /* yellow line */
+  display: inline-block; /* sirf text ke width tak line aayegi */
+}
+
+    .footer-links,
+    .footer-links li {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .social-icon {
+      color: white;
+      margin-right: 10px;
+      font-size: 20px;
+      text-decoration: none;
+      display: inline-block;
+      transition: color 0.3s ease;
+    }
+
+    .social-icon.fb:hover {
+      color: #3b5998; /* Facebook Blue */
+    }
+
+    .social-icon.tw:hover {
+      color: #1da1f2; /* Twitter Blue */
+    }
+
+    .social-icon.ln:hover {
+      color: #0a66c2; /* LinkedIn Blue */
+    }
+.social-icon.in:hover {
+      color: pink; /* Instagram Pink */
+    }
+    .footer-bottom {
+      text-align: center;
+      margin-top: 30px;
+      border-top: 1px solid #333;
+      padding-top: 10px;
+      font-size: 14px;
     }
 
     @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-        padding: 20px 15px;
-      }
-
-      .form-box {
-        margin: 20px 15px;
+      .footer-section {
+        flex: 1 1 100%;
       }
     }
-    </style>
-    </head>
+   
+  </style>
+</head>
 <body>
+  <!-- Header -->
   <header class="header">
     <div class="header-inner">
-      <!-- Left Logo & Title -->
       <div class="logo-section">
         <img src="Dev_Sanskriti_Vishwavidyalaya-removebg-preview.png" alt="Logo">
         <h1>DSVV Alumni Engagement</h1>
       </div>
-
-      <!-- Desktop Navigation -->
+      <!-- Desktop Menu -->
       <nav class="navbar desktop-nav">
         <ul class="nav-menu">
           <li class="nav-item dropdown">
-            <a href="#" class="nav-link">COMMUNITY ▾</a>
+            <a class="nav-link">COMMUNITY ▾</a>
             <ul class="dropdown-menu">
               <li><a href="directory.html">Alumni Directory</a></li>
               <li><a href="birthday.html">Alumni Birthdays</a></li>
@@ -353,85 +318,70 @@
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a href="#" class="nav-link">EVENTS ▾</a>
+            <a class="nav-link">EVENTS ▾</a>
             <ul class="dropdown-menu">
-              <li><a href="Event.html">Events </a></li>
+              <li><a href="Event.html">Events</a></li>
               <li><a href="gallery.html">Galleries</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a href="#" class="nav-link">GET INVOLVED ▾</a>
+            <a class="nav-link">GET INVOLVED ▾</a>
             <ul class="dropdown-menu">
               <li><a href="mentornship.html">Mentorship Program</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a href="#" class="nav-link">ABOUT ▾</a>
+            <a class="nav-link">ABOUT ▾</a>
             <ul class="dropdown-menu">
               <li><a href="About.html">About Us</a></li>
             </ul>
           </li>
         </ul>
-        <!-- Desktop Navigation -->
-<nav class="navbar desktop-nav">
-  
-  <a href="Login.html" class="login-button desktop-only">LOGIN</a>
-</nav>
-
+        <a href="Login.html" class="login-button">LOGIN</a>
       </nav>
-
       <!-- Mobile Toggle -->
       <div class="mobile-toggle">
         <button onclick="toggleMenu()">MENU</button>
-       <a href="Login.html" class="login-button">LOGIN</a>
+        <a href="Login.html" class="login-button">LOGIN</a>
       </div>
     </div>
   </header>
 
-  <!-- Mobile Slide Menu -->
+  <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
     <div class="menu-header">
-      Menu
-      <button onclick="toggleMenu()">✕</button>
+      Menu <button onclick="toggleMenu()">✕</button>
     </div>
-    <div class="nav-section">
-      <details>
-        <summary>Community</summary>
-        <ul>
-          <li><a href="directory.html">Alumni Directory</a></li>
-          <li><a href="birthday.html">Alumni Birthday</a></li>
-          <li><a href="speaks.html">Alumni Speaks</a></li>
-          <li><a href="news.html">Alumni News</a></li>
-        </ul>
-      </details>
-      <details>
-        <summary>Events</summary>
-        <ul>
-          <li><a href="Event.html">Events </a></li>
-          <li><a href="gallery.html">Galleries</a></li>
-        </ul>
-      </details>
-      <details>
-        <summary>Get Involved</summary>
-        <ul>
-          <li><a href="mentornship.html">Mentorship Program</a></li>
-         
-        </ul>
-      </details>
-      <details>
-        <summary>About</summary>
-        <ul>
-          <li><a href="About.html">About Us</a></li>
-          
-        </ul>
-      </details>
-    </div>
+    <details>
+      <summary>Community</summary>
+      <ul>
+        <li><a href="directory.html">Alumni Directory</a></li>
+        <li><a href="birthday.html">Alumni Birthdays</a></li>
+        <li><a href="speaks.html">Alumni Speaks</a></li>
+        <li><a href="news.html">Alumni News</a></li>
+      </ul>
+    </details>
+    <details>
+      <summary>Events</summary>
+      <ul>
+        <li><a href="Event.html">Events</a></li>
+        <li><a href="gallery.html">Galleries</a></li>
+      </ul>
+    </details>
+    <details>
+      <summary>Get Involved</summary>
+      <ul><li><a href="mentornship.html">Mentorship Program</a></li></ul>
+    </details>
+    <details>
+      <summary>About</summary>
+      <ul><li><a href="About.html">About Us</a></li></ul>
+    </details>
   </div>
-</header>
-<section class="about-section">
-    <h1>About DSVVAE</h1>
-   <p>
-     Dev Sanskriti Vishwavidyalaya (DSVV) is a premier institution located in the serene 
+
+  <section class="about-section">
+    <h2>About DSVVAE</h2>
+    <p>
+       Dev Sanskriti Vishwavidyalaya (DSVV) is a premier institution located in the serene 
      environment of Haridwar, Uttarakhand, founded with the vision of revitalizing Indian
      culture and values through modern education. Established under the guidance of Pt.
      Shriram Sharma Acharya, the founder of the All World Gayatri Pariwar, DSVV aims to 
@@ -439,67 +389,148 @@
      spiritually awakened.
     </p>
     <p>
-     The university stands out for its unique curriculum that integrates academic excellence 
+      The university stands out for its unique curriculum that integrates academic excellence 
      with practical training in life skills, ethics, and social responsibility. It offers various
      programs in disciplines such as Yogic Science, Indian Culture, Clinical Psychology,
      Journalism and Mass Communication, Education, Computer Science, and Holistic Health.
     </p>
     <p>
-      DSVV promotes a lifestyle rooted in Indian traditions like yoga, meditation, and value-
+     DSVV promotes a lifestyle rooted in Indian traditions like yoga, meditation, and value-
       based living. The university campus is designed to foster inner peace, discipline, and 
       selfless service. Students are encouraged to participate in community service,
      environmental conservation, and research with a strong emphasis on sustainable 
      development and human values.
-   </p>
+    </p>
     <p>
-     With national and international collaborations, DSVV has gained global recognition as a center for spiritual
+      With national and international collaborations, DSVV has gained global recognition as a center for spiritual
     education, cultural exchange, and transformative learning. It aspires to be a lighthouse of Indian wisdom for
    the entire world, blending the best of ancient heritage and modern knowledge.
-
   </section>
-   <div class="contact-header">
-    <h1>Contact Us</h1>
-  </div>
-
   <div class="container">
     <!-- Contact Info -->
-    <div class="info-box">
+    <div class="contact-info">
       <h2>Contact Info</h2>
-      <p>IITR ALUMNI ASSOCIATION</p>
-      <p>Main Building,DSVV Haridwar,<br>Uttarakhand– 247667</p>
-      <p>📧dsvv.ac.in@gmail.com | dsvv@.ac.in</p>
-      <p>🔗 <a href="https://www.dsvv.ac.in/" target="_blank">https://www.dsvv.ac.in/</a></p>
+      <p><strong>Dev Sanskriti Vishwavidyalaya (DSVV)</strong></p>
+      <p>Gayatrikunj-Shantikunj, Haridwar<br>Uttarakhand – 249411</p>
+      <p><i class="fa-regular fa-envelope"></i>  <a href="mailto:info@dsvv.ac.in">info@dsvv.ac.in</a></p>
+      <p><i class="fa-solid fa-link"></i> <a href="https://www.dsvv.ac.in/" target="_blank">https://www.dsvv.ac.in/</a></p>
     </div>
-
-    <!-- Google Map -->
-    <div class="map-box">
-      <iframe 
-        src="https://maps.app.goo.gl/XH1PsDbe7tLn5Sdw5" 
-        allowfullscreen="" loading="lazy">
-      </iframe>
     </div>
-  </div>
-
-  <!-- Contact Form -->
-  <div class="form-box">
+<div class="form-container">
     <h2>Reach Out</h2>
-    <form>
+    <form id="contactForm">
       <label for="name">Your Name *</label>
-      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="text" id="name" name="name" placeholder="Your Name">
+      <div class="error" id="nameError"></div>
 
-      <label for="email">Email *</label>
-      <input type="email" id="email" placeholder="Your Email" required>
+      <label for="email">Your Email *</label>
+      <input type="email" id="email" name="email" placeholder="Your Email">
+      <div class="error" id="emailError"></div>
 
-      <label for="message">Message *</label>
-      <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+      <label for="phone">Phone No.</label>
+      <div class="phone-group">
+        <select id="countryCode">
+          <option value="+91">+91 India</option>
+          <option value="+1">+1 USA</option>
+          <option value="+44">+44 UK</option>
+          <option value="+61">+61 Australia</option>
+          <option value="+971">+971 UAE</option>
+        </select>
+        <input type="tel" id="phone" name="phone" placeholder="Phone No.">
+      </div>
 
-      <button type="submit">Send Message</button>
+      <label for="message">Your Message *</label>
+      <textarea id="message" name="message" placeholder="Your Message"></textarea>
+      <div class="error" id="messageError"></div>
+
+      <button type="submit">SUBMIT</button>
     </form>
   </div>
-<script>
-    function toggleMenu() {
+   <!--Footer-->
+   <footer style="background-color: #003366; color: white; padding: 40px 30px 30px; font-family: Arial, sans-serif;">
+ <div class="footer-container">
+    <!-- About -->
+    <div class="footer-section">
+      <h3>Alumni Engagement</h3>
+      <p style="line-height: 1.6;">Connecting our alumni community with updates, events, and opportunities. Stay involved and support the legacy.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Event.html">Events</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="About.html">Contact</a></li>
+      </ul>
+    </div>
+
+
+    <!-- Contact Info -->
+    <div class="footer-section">
+      <h4>Contact Us</h4>
+      <p>Email: alumni@dsvv.ac.in</p>
+      <p>Phone: +91-12345-67890</p>
+      <p>Address: DSVV Campus, Haridwar, India</p>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+      <a href="#" class="social-icon fb"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="social-icon tw"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="social-icon ln"><i class="fab fa-linkedin-in"></i></a>
+    <a href="#" class="social-icon in"><i class="bi bi-instagram"></i></a> 
+    </div>
+  </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 Alumni Engagement | Developed by Software Development Cell, DSVV
+  </div>
+</footer>
+<!-- FOOTER END -->
+  <script>
+     function toggleMenu() {
       document.getElementById('mobileMenu').classList.toggle('active');
     }
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      
+      let valid = true;
+
+      // Clear previous errors
+      document.querySelectorAll(".error").forEach(el => el.textContent = "");
+
+      // Name Validation
+      const name = document.getElementById("name").value.trim();
+      if (name === "") {
+        document.getElementById("nameError").textContent = "Name is required.";
+        valid = false;
+      }
+
+      // Email Validation
+      const email = document.getElementById("email").value.trim();
+      const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      if (!emailPattern.test(email)) {
+        document.getElementById("emailError").textContent = "Enter a valid email.";
+        valid = false;
+      }
+
+      // Message Validation
+      const message = document.getElementById("message").value.trim();
+      if (message === "") {
+        document.getElementById("messageError").textContent = "Message is required.";
+        valid = false;
+      }
+
+      if (valid) {
+        alert("Form submitted successfully!");
+        document.getElementById("contactForm").reset();
+      }
+    });
   </script>
-  </body>
-  </html>
+</body>
+</html>
